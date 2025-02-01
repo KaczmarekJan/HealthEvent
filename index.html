@@ -3,30 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Memory Training Game">
+    <meta name="keywords" content="Memory, Trainer, Game">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Incy">
     <link rel="stylesheet" href="style.css">
-    <title>Project</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title>Memory Trainer</title>
 </head>
 <body>
-    <div class="background"></div>
-    <div class="content">
+    <section class="background"></section>
+    <section class="content">
         <header>
             <section><button onclick="previous()">&#60</button></section>
             <section id="card_title">Card title 1</section>
             <section><button onclick="next()">&#62</button></section>
         </header>
-        <div class="slider">
-            <main id="m1" onclick="start()" class="main" data-title="Card title 1">
+        <main class="slider">
+            <section id="m1" onclick="start()" class="section" data-title="Card title 1">
                 <p>Click anywhere to start 1</p>
-            </main>
-            <main id="m2" onclick="start()" class="main" data-title="Card title 2">
+            </section>
+            <section id="m2" onclick="start()" class="section" data-title="Card title 2">
                 <p>Click anywhere to start 2 </p>
-            </main>
-            <main id="m3" onclick="start()" class="main" data-title="Card title 3">
+            </section>
+            <section id="m3" onclick="start()" class="section" data-title="Card title 3">
                 <p>Click anywhere to start 3 </p>
-            </main>
-        </div>
+            </section>
+        </main>
         <footer></footer>
-    </div>
+    </section>
     <script src="script.js"></script>
 </body>
 </html>
