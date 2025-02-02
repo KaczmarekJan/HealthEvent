@@ -15,19 +15,63 @@
     <section class="background"></section>
     <section class="content">
         <header>
+            <p id="time"></p>
             <section><button onclick="previous()">&#60</button></section>
-            <section id="card_title">Card title 1</section>
+            <section id="card_title">Game</section>
             <section><button onclick="next()">&#62</button></section>
+            <select name="level" id="level">
+                <option>Level 1</option>
+                <option>Level 2</option>
+                <option>Level 3</option>
+            </select>
         </header>
         <main class="slider">
-            <section id="m1" onclick="start()" class="section" data-title="Card title 1">
-                <p>Click anywhere to start 1</p>
+            <section id="m1" class="section article_content" data-title="Card title 1">
+                <h1></h1>
+
+                <h2>Stroke Recovery</h2>
+                <p>Helps rewire the brain, relearn memory skills, and regain independence.</p>
+            
+                <h2>Traumatic Brain Injury (TBI)</h2>
+                <p>Strengthens focus and attention, reducing mental fatigue and improving daily tasks.</p>
+            
+                <h2>Multiple Sclerosis (MS)</h2>
+                <p>Boosts organization with planners and reminders, making life easier and less exhausting.</p>
+            
+                <h2>Depression</h2>
+                <p>Engages the brain, lifts mood, and boosts confidence through enjoyable memory exercises.</p>
+            
+                <h2>Anxiety Disorders</h2>
+                <p>Trains focus, reducing racing thoughts and improving mental clarity.</p>
+            
+                <h2>Long COVID/Post-COVID</h2>
+                <p>Fights "brain fog" with structured exercises, helping rebuild thinking skills.</p>
+            
+                <h2>Chemo Brain</h2>
+                <p>Provides memory strategies to stay sharp and organized during and after treatment.</p>
+            
+                <h2>Parkinson’s Disease</h2>
+                <p>Uses routines and visual reminders to maintain independence and manage memory challenges.</p>
+            
+                <h2>Learning Disabilities (Dyslexia, etc.)</h2>
+                <p>Uses multi-sensory techniques to boost retention and confidence in learning.</p>
+            
+                <h2>Fibromyalgia ("Fibro Fog")</h2>
+                <p>Reduces mental overload with simple memory tricks for a clearer, easier daily life.</p>
             </section>
-            <section id="m2" onclick="start()" class="section" data-title="Card title 2">
-                <p>Click anywhere to start 2 </p>
+            <section id="m2" class="section start_content" data-title="Card title 2">
+                <p onclick="start()">Click anywhere to start</p>
             </section>
-            <section id="m3" onclick="start()" class="section" data-title="Card title 3">
-                <p>Click anywhere to start 3 </p>
+            <section id="m3" class="section" data-title="Card title 3">
+                <p></p>
+            </section>
+            <section class="game_content">
+                <div class="colours">
+                    <div id="colour1"></div>
+                    <div id="colour2"></div>
+                    <div id="colour3"></div>
+                    <div id="colour4"></div>
+                </div>
             </section>
         </main>
         <footer></footer>
