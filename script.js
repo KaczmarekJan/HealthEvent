@@ -6,7 +6,7 @@ function updatetime() {
     document.getElementById("time").innerText = hours+":"+minutes+":"+seconds;
 }
 
-setInterval(updatetime, 1000);
+setInterval(updatetime, 500);
 updatetime();
 document.addEventListener("mousemove", (e) => {
     const background = document.querySelector(".background");
@@ -35,39 +35,7 @@ async function game()
     switch(g)
     {
         case 0:
-                document.querySelector(".colours").style.display = "flex";
-                let amount = 2;
-                let clicks = new Array(5).fill(0);
-                let player_click = new Array(5).fill(0);
-                for(let rounds=1;rounds<Number(level);rounds++)
-                {
-                    let x=Math.floor(Math.random()*5);
-                    for(let i=1;i<5;i++)
-                    {
-                        console.log()
-                        document.getElementById("colour"+x).addEventListener("click",function(){
-                            player_click[x]++;
-                        })
-                        let y=Math.floor(Math.random()*amount);
-                        clicks[x] = y;
-                        for(let j=1;j<y;j++)
-                        {
-                            document.getElementById("colour"+x).style.filter = "brightness(150%)";
-                            await Delay(750);
-                            document.getElementById("colour"+x).style.filter = "brightness(100%)";
-                            await Delay(1000);
-                        }
-                    }
-                    for(let k=1;k<6;k++)
-                    {
-                        if(clicks[k]==player_click[k])
-                        {
-                            points++;
-                        }
-                    }
-                    amount+=2;
-                }
-                gamerunning=false;
+                colours();
                 break;
                 
     }

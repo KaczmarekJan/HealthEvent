@@ -84,12 +84,15 @@ button:hover {
     border: 1px dashed gray;
     padding: 1%;
 }
-#level,
-#level > option
+#level
 {
     background: transparent;
     border: none;
     color: white;
+}
+#level > option
+{
+    color: black;
 }
 .game_content,
 .colours
