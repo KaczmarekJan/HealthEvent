@@ -1,3 +1,4 @@
+var level_value;
 //random game
 function game()
 {
@@ -6,6 +7,7 @@ function game()
         document.getElementById("baner").style.visibility = "hidden";
         document.getElementById("m2").style.display = "none";
         document.getElementById("game_content").style.display = "flex";
+        level_value = document.getElementById("level").value*2;
 
         switch(Math.floor(Math.random()*1))
         {
@@ -17,6 +19,12 @@ function game()
                     break;
         }
     }
+}
+
+
+//waiting function
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 
