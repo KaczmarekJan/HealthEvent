@@ -35,7 +35,6 @@ async function game()
     switch(g)
     {
         case 0:
-            {
                 document.querySelector(".colours").style.display = "block";
                 let amount = 2;
                 let clicks = new Array(5).fill(0);
@@ -43,7 +42,7 @@ async function game()
                 for(let rounds=1;rounds<Number(level);rounds++)
                 {
                     let x=Math.floor(Math.random()*6);
-                    for(let i=1;i<6;i++)
+                    for(let i=1;i<5;i++)
                     {
                         document.getElementById("colour"+x).addEventListener("click",function(){
                             player_click[x]++;
@@ -67,9 +66,9 @@ async function game()
                     }
                     amount+=2;
                 }
-                break;
                 gamerunning=false;
-            }
+                break;
+                
     }
 }
 var m_next = 2;
