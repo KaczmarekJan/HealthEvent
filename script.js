@@ -41,10 +41,10 @@ async function game()
                 let player_click = new Array(5).fill(0);
                 for(let rounds=1;rounds<Number(level);rounds++)
                 {
-                    let x=Math.floor(Math.random()*5);
+                    let x=Math.ceil(Math.random()*4);
                     for(let i=1;i<5;i++)
                     {
-                        console.log()
+                        console.log("colour"+x);
                         document.getElementById("colour"+x).addEventListener("click",function(){
                             player_click[x]++;
                         })
