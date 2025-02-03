@@ -24,7 +24,7 @@ function start()
 {
     gamerunning = true;
     document.querySelector(".start_content").style.display = "none";
-    document.querySelector(".game_content").style.display = "block";
+    document.querySelector(".game_content").style.display = "flex";
     game();
 }
 async function game()
@@ -35,7 +35,7 @@ async function game()
     switch(g)
     {
         case 0:
-                document.querySelector(".colours").style.display = "block";
+                document.querySelector(".colours").style.display = "flex";
                 let amount = 2;
                 let clicks = new Array(5).fill(0);
                 let player_click = new Array(5).fill(0);

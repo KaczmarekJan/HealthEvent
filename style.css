@@ -91,14 +91,24 @@ button:hover {
     border: none;
     color: white;
 }
+.game_content,
+.colours
+{
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
 #colour1,
 #colour2,
 #colour3,
 #colour4
 {
-    width: 50%;
-    height: 50%;
-    float: left;
+    width: 150px;
+    height: 150px;
+    margin: 25px;
+    transform: rotate(-90deg);
 }
 #colour1
 {
