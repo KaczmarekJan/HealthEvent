@@ -1,7 +1,7 @@
 //random game
 function game()
 {
-    if(document.getElementById("m2").style.display === "block")
+    if(document.getElementById("m2").style.display !== "none")
     {
         document.getElementById("baner").style.visibility = "hidden";
         document.getElementById("m2").style.display = "none";
