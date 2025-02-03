@@ -7,28 +7,36 @@
     <meta name="keywords" content="Memory, Trainer, Game">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Incy">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <title>Memory Trainer</title>
 </head>
 <body>
-    <section class="background"></section>
-    <section class="content">
-        <header>
+    <section id="background"></section>
+    <section id="container">
+        <header id="baner">
             <p id="time"></p>
-            <section><button onclick="previous()">&#60;</button></section>
-            <section id="card_title">Game</section>
-            <section><button onclick="next()">&#62;</button></section>
-            <select name="level" id="level">
-                <option value="1">Level 1</option>
-                <option value="2">Level 2</option>
-                <option value="3">Level 3</option>
-            </select>
+            <section>
+                <button class="slider_button" onclick="previous()">&#60;</button>
+            </section>
+            <section id="title">
+                <strong>Game</strong>
+            </section>
+            <section>
+                <button class="slider_button" onclick="next()">&#62;</button>
+            </section>
+            <section>
+                <select name="level" id="level">
+                    <option value="1">Level 1</option>
+                    <option value="2">Level 2</option>
+                    <option value="3">Level 3</option>
+                </select>
+            </section>
         </header>
-        <main class="slider" onclick="start()">
-            <section id="m1" class="section article_content" data-title="Card title 1">
-                <h1></h1>
-
+        <main id="slider" onclick="game()">
+            <article id="m1">
+                <h1>How Memory Training Helps Different Conditions</h1>
+                <br>
                 <h2>Stroke Recovery</h2>
                 <p>Helps rewire the brain, relearn memory skills, and regain independence.</p>
             
@@ -58,19 +66,19 @@
             
                 <h2>Fibromyalgia ("Fibro Fog")</h2>
                 <p>Reduces mental overload with simple memory tricks for a clearer, easier daily life.</p>
-            </section>
-            <section id="m2" class="section start_content" data-title="Card title 2">
+            </article>
+            <section id="m2">
                 <p>Click anywhere to start</p>
             </section>
-            <section id="m3" class="section" data-title="Card title 3">
-                <p></p>
-            </section>
-            <section class="game_content">
-                <div class="colours">
-                    <div id="colour1"></div>
-                    <div id="colour2"></div>
-                    <div id="colour3"></div>
-                    <div id="colour4"></div>
+            <article id="m3">
+                <p id="rank"></p>
+            </article>
+            <section id="game_content">
+                <div id="colours">
+                    <div class="colour"></div>
+                    <div class="colour"></div>
+                    <div class="colour"></div>
+                    <div class="colour"></div>
                 </div>
             </section>
         </main>
