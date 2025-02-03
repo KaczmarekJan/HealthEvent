@@ -1,5 +1,28 @@
+//random game
+function game()
+{
+    if(document.getElementById("m2").style.display === "block")
+    {
+        document.getElementById("baner").style.visibility = "hidden";
+        document.getElementById("m2").style.display = "none";
+        document.getElementById("game_content").style.display = "flex";
+
+        switch(Math.floor(Math.random()*1))
+        {
+            case 0:
+                    colours();
+                    break;
+            default:
+                    alert("wrong case number");
+                    break;
+        }
+    }
+}
+
+
 //timekeeper
-function updatetime() {
+function updatetime() 
+{
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
     const minutes = now.getMinutes().toString().padStart(2, '0');
@@ -9,6 +32,7 @@ function updatetime() {
 setInterval(updatetime, 500);
 updatetime();
 
+
 //moving background
 document.addEventListener("mousemove", (e) => 
     {
@@ -16,6 +40,7 @@ document.addEventListener("mousemove", (e) =>
         "translate(calc(-50% + " + ((e.clientX / window.innerWidth - 0.5) * 60) + "px), " + 
                     "calc(-50% + " + ((e.clientY / window.innerHeight - 0.5) * 60) + "px))";
     });
+
 
 //next page
 var m_next = 2;
@@ -68,12 +93,17 @@ function updatetitle(m_next)
     document.getElementById("title").innerHTML = text;
 }
 
+
 //previous page
-function previous() {
-    if (m_next == 1) {
+function previous() 
+{
+    if (m_next == 1) 
+    {
         m_next = 3;
         m_previous = 1;
-    } else {
+    }
+    else 
+    {
         m_previous = m_next;
         m_next -= 1;
     }
@@ -81,28 +111,3 @@ function previous() {
     document.getElementById("m" + m_next).style.display = "block";
     updatetitle(m_next);
 }
-
-
-
-//random game
-function game()
-{
-    if(document.getElementById("m2").style.display === "block")
-    {
-        document.getElementById("baner").style.visibility = "hidden";
-        document.getElementById("m2").style.display = "none";
-        document.getElementById("game_content").style.display = "flex";
-
-        switch(Math.floor(Math.random()*1))
-        {
-            case 0:
-                    colours();
-                    break;
-            default:
-                    alert("wrong case number");
-                    break;
-        }
-    }
-}
-
-
