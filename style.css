@@ -108,6 +108,10 @@ body
 {
     display: block;
 }
+#notification
+{
+    transition: opacity 1s ease-in-out;
+}
 #m3
 {
     display: none;
