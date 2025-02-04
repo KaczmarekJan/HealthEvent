@@ -6,6 +6,21 @@ var count = new Array(4).fill(0);   //table with actual clicks
 var points = 0;
 
 
+//user clicks on the blocks
+async function users_click(x) 
+{
+    if(x !== undefined)
+    {
+        const colour = document.getElementsByClassName("colour")[x];
+        colour.style.boxShadow = `0 0 5px 5px ${colour.style.backgroundColor}`; //display shadow
+        await delay(500);   //wait
+        colour.style.boxShadow = "none";   //hide shadow
+        await delay(500);   //wait
+        count[x]++;
+    }
+}
+
+
 //colours game
 async function colours()
 {
@@ -47,28 +62,32 @@ async function colours()
                 await delay(500);   //wait
             }
             required_count[i] = randomBlinks;
-            block_sequence[i] = randomBlock;    //adress required amount of clicks
+            block_sequence[i] = randomIndex;    //adress required amount of clicks
         }
             let startTime = Date.now();
             let p=-1;
             while(p<4)
                 {
-                    console.log(required_count[p]);
-                    console.log(count[block_sequence[p]]);
                     p++;
-                    if(required_count[p]===count[block_sequence[p]])
+                    console.log("p to jest: "+p);
+                    console.log("blyskow: "+required_count[p]);
+                    console.log("klikniec :"+count[block_sequence[p]]);
+                    if(required_count[p]==count[block_sequence[p]])
                     {
                         points++;
-                        break;
                     }
                     else if(required_count[p]<count[block_sequence[p]])
                     {
                         alert("Wrong");
                         break;
                     }
-                    else if(Date.now()-startTime >= 5000)
+                    else if(Date.now()-startTime >= 100000)
                     {
                         alert("Too long");
+                        break;
+                    }
+                    else if(p>=required_count.length-1)
+                    {
                         break;
                     }
                     else
@@ -82,20 +101,5 @@ async function colours()
         {
             number_of_blocks++;
         }
-    }
-}
-
-
-//user clicks on the blocks
-async function users_click(x) 
-{
-    if(x !== undefined)
-    {
-        const colour = document.getElementsByClassName("colour")[x];
-        colour.style.boxShadow = `0 0 5px 5px ${colour.style.backgroundColor}`; //display shadow
-        await delay(500);   //wait
-        colour.style.boxShadow = "none";   //hide shadow
-        await delay(500);   //wait
-        count[x]++;
     }
 }
