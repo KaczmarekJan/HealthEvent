@@ -21,6 +21,31 @@ async function users_click(x)
 }
 
 
+//checking if user clicked right
+function checking(x)
+{
+    for(let i=0;i<4;i++)
+        {
+            if(count[i]===required_count[i])
+            {
+                return true;
+            }
+        }
+    let start_time = Date.now();
+    if (count[x] !== required_count[x])   //if user clicks right
+        return false;
+    else if(count[x] < required_count[x])
+        return;
+    else if(start_time - Date.now() > 3000)
+        return false;
+    else
+    {
+        points++;
+        return;
+    }
+}
+
+
 //colours game
 async function colours()
 {
@@ -64,38 +89,12 @@ async function colours()
             required_count[i] = randomBlinks;
             block_sequence[i] = randomIndex;    //adress required amount of clicks
         }
-            let startTime = Date.now();
-            let p=-1;
-            while(p<4)
-                {
-                    p++;
-                    console.log("p to jest: "+p);
-                    console.log("blyskow: "+required_count[p]);
-                    console.log("klikniec :"+count[block_sequence[p]]);
-                    if(required_count[p]==count[block_sequence[p]])
-                    {
-                        points++;
-                    }
-                    else if(required_count[p]<count[block_sequence[p]])
-                    {
-                        alert("Wrong");
-                        break;
-                    }
-                    else if(Date.now()-startTime >= 100000)
-                    {
-                        alert("Too long");
-                        break;
-                    }
-                    else if(p>=required_count.length-1)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        await delay(1000);
-                        p=-1;
-                    }
-                }
+
+        if(checking()==true)
+        {
+            
+        }
+
         amount_of_blinks++;
         if(number_of_blocks<4)
         {
