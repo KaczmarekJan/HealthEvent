@@ -54,7 +54,7 @@ async function colours()
         }
     
         var count = new Array(4).fill(0);
-        await new Promise((resolve, reject ) => {
+        await new Promise(resolve => {
             const handleClick = async (event) => 
             {
                 //variables
@@ -73,12 +73,12 @@ async function colours()
                     {
                         points++;
                         blocks.forEach(block => block.removeEventListener("click", handleClick));
-                        resolve();
+                        resolve("WIN");
                     }
-                    else if(count[blockIndex] > required_count[blockIndex])    //if user clicks too many times
+                    else if(count.some((val, idx) => val > required_count[idx]))    //if user clicks too many times
                     {
                         blocks.forEach(block => block.removeEventListener("click", handleClick));
-                        reject();
+                        resolve("LOOSE");
                     }
             }
             blocks.forEach(block => block.addEventListener("click", handleClick));
