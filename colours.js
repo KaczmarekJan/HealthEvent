@@ -1,7 +1,3 @@
-//user clicks on the blocks
-async function users_click() 
-{
-}
 //colours game
 async function colours()
 {
@@ -58,27 +54,44 @@ async function colours()
             const handleClick = async (event) => 
             {
                 //variables
-                let clickedBlock = event.target;
-                let blockIndex = blocks.indexOf(clickedBlock);
+                const clickedBlock = event.target;
+                const blockIndex = blocks.indexOf(clickedBlock);
                 
                 //clicked block animation
                 clickedBlock.style.boxShadow = `0 0 5px 5px ${clickedBlock.style.backgroundColor}`;
                 await delay(500);
                 clickedBlock.style.boxShadow = "none";
                 await delay(500);
-                count[blockIndex]++;
-
+                count[blockIndex]++;     
                     //check if the user clicked the right block
                     if (count.every((val, idx) => val == required_count[idx])) 
                     {
                         points++;
+                        //notification
+                        blocks.forEach(block => block.style.display = "none");
+                        const notification = document.createElement("h2");
+                        notification.textContent = "Correct!";
+                        document.getElementById("colours").appendChild(notification);
+                        await delay(500);
+                        notification.remove();
+                        blocks.forEach(block => block.style.display = "block");
+                        //deleting listeners and resolving promise
                         blocks.forEach(block => block.removeEventListener("click", handleClick));
-                        resolve("WIN");
+                        resolve();
                     }
                     else if(count.some((val, idx) => val > required_count[idx]))    //if user clicks too many times
                     {
+                        //notification
+                        blocks.forEach(block => block.style.display = "none");
+                        const notification = document.createElement("h2");
+                        notification.textContent = "Wrong!";
+                        document.getElementById("colours").appendChild(notification);
+                        await delay(500);
+                        notification.remove();
+                        blocks.forEach(block => block.style.display = "block");
+                        //deleting listeners and resolving promise
                         blocks.forEach(block => block.removeEventListener("click", handleClick));
-                        resolve("LOOSE");
+                        resolve();
                     }
             }
             blocks.forEach(block => block.addEventListener("click", handleClick));
@@ -86,8 +99,14 @@ async function colours()
 
         if(number_of_blocks<4)
         {
-            number_of_blocks++;
+            number_of_blocks+=0.5;
         }
-        amount_of_blinks++;
+        amount_of_blinks+=0.2;
     }
+    const score = document.createElement("h2");
+    score.textContent = `Score: ${points}`;
+    document.getElementById("colours").appendChild(score);
+    await delay(500);
+    score.remove();
+    return "over";
 }
