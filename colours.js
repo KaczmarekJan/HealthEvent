@@ -1,34 +1,39 @@
 //variables
 var blocks = Array.from(document.getElementsByClassName("colour")); //create a table from existing classes
+var number_of_blocks = 1;   //number of blocks
 var required_count = new Array(4).fill(0);  //table with required amounts of clicks
 var block_sequence = new Array(4).fill(0);  //table with block sequence
 var count = new Array(4).fill(0);   //table with actual clicks
 var points = 0;
+var is_animation_over = false;
+
 
 
 //user clicks on the blocks
-async function users_click(x) 
+async function users_click() 
 {
-    if(x !== undefined)
-    {
-        const colour = document.getElementsByClassName("colour")[x];
-        colour.style.boxShadow = `0 0 5px 5px ${colour.style.backgroundColor}`; //display shadow
-        await delay(500);   //wait
-        colour.style.boxShadow = "none";   //hide shadow
-        await delay(500);   //wait
-        count[x]++;
-    }
+    const colour = document.getElementsByClassName("colour")[index];
+    colour.style.boxShadow = `0 0 5px 5px ${colour.style.backgroundColor}`;
+    await delay(500);
+    colour.style.boxShadow = "none";
+    await delay(500);
+    count[x]++;
 }
+
 
 
 //colours game
 async function colours()
 {
     document.getElementById("colours").style.display = "flex";    //show the blocks
-    let number_of_blocks = 0;
     let amount_of_blinks = 0;
     for(let r=1;r<level_value;r++)
     {
+        //reset all variables
+        count.fill(0);
+        required_count.fill(0);
+        block_sequence.fill(0);
+
         const blocks_colours = [
             "#FF5733", // Bright Red Orange
             "#33FF57", // Neon Green
@@ -65,7 +70,7 @@ async function colours()
             block_sequence[i] = randomIndex;    //adress required amount of clicks
         }
 
-        
+
 
         amount_of_blinks++;
         if(number_of_blocks<4)
