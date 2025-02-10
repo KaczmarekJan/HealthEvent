@@ -25,6 +25,11 @@ async function colours()
             let randomIndex = Math.floor(Math.random()*blocks_colours.length);  //randomize blocks colours
             blocks[i].style.display = "block";   //show the block
             blocks[i].style.backgroundColor = blocks_colours.splice(randomIndex, 1)[0];   //delete 1 element from table so that it wont be picked twice
+            blocks[i].addEventListener("click", () => {
+                const sound = new Audio(`sound${i}.wav`);
+                sound.currentTime = 0;
+                sound.play();
+            });   //add event listener
         }
         var required_count = new Array(4).fill(0);  //table with required amounts of clicks
         var indexes_used = new Array();
@@ -99,7 +104,11 @@ async function colours()
             }
             blocks.forEach(block => block.addEventListener("click", handleClick));
         });
-
+        blocks.forEach(block => block.removeEventListener("click", () => {
+            const sound = new Audio(`sound${i}.wav`);
+            sound.currentTime = 0;
+            sound.play();
+        }));   //remove event listener
         if(number_of_blocks<4)
         {
             number_of_blocks+=0.5;
