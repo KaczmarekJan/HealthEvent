@@ -80,7 +80,6 @@ body
     box-shadow: 0px 0px 15px #a637e7;
     backdrop-filter: blur(1.5px);
     display: flex;
-    align-items: center;
     justify-content: center;
     overflow: auto;
 }
@@ -94,9 +93,17 @@ body
     animation-duration: 6s;
     animation-iteration-count: infinite;
 }
+#slider > #m1 
+{
+    align-self: flex-start;
+}
+#slider > #m2,
+#slider > #m3 
+{
+    align-self: center;
+}
 #m1
 {
-    margin-top: 700px;
     display: none;
 }
 #m1>p
@@ -131,4 +138,17 @@ body
     height: 150px;
     margin: 25px;
     transform: rotate(-90deg);
+}
+#numbers
+{
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#userAnswer
+{
+    background-color: rgba(50, 50, 50, 0.3);
+    padding: 5px;
+    border: none;
+    color: white;
 }

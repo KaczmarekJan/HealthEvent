@@ -4,10 +4,9 @@ async function colours()
     //variables
     var number_of_blocks = Array.from(document.getElementsByClassName("colour")).length-3;   //number of blocks
     var amount_of_blinks = 1;   //number of blinks
-    var points = 0; //number of points
 
     document.getElementById("colours").style.display = "flex";    //show the blocks
-    for(let r=1;r<level_value;r++)
+    for(let r=0;r<level_value*4;r++)
     {
         var blocks = Array.from(document.getElementsByClassName("colour")); //create a table from existing classes
         let blocks_colours = 
@@ -111,6 +110,6 @@ async function colours()
     const score = document.createElement("h2");
     score.textContent = `Score: ${points}`;
     document.getElementById("colours").appendChild(score);
-    await delay(1000);
+    await delay(2000);
     score.remove();
 }

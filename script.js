@@ -1,5 +1,6 @@
 var level_value;
 var is_game_running;
+var points = 0; //number of points
 //random game
 async function game()
 {
@@ -8,12 +9,15 @@ async function game()
         document.getElementById("baner").style.visibility = "hidden";
         document.getElementById("m2").style.display = "none";
         document.getElementById("game_content").style.display = "flex";
-        level_value = document.getElementById("level").value*2;
+        level_value = document.getElementById("level").value;
 
-        switch(Math.floor(Math.random()*1))
+        switch(Math.floor(Math.random()*2))
         {
             case 0:
                     await colours();
+                    break;
+            case 1:
+                    await numbers();
                     break;
             default:
                     alert("wrong case number");
