@@ -40,7 +40,6 @@ async function colours()
             required_count[randomIndex] = randomBlinks;
             for(let j=0;j<randomBlinks;j++) //loop makes blocks blink
             {
-                console.log(`Błysk ${j+1} bloku ${randomIndex+1}\n`);
                 await delay(500);   //wait
                 blocks[randomIndex].style.boxShadow = `0 0 5px 5px ${blocks[randomIndex].style.backgroundColor}`; //display shadow
                 await delay(500);   //wait
@@ -51,7 +50,6 @@ async function colours()
     
         await new Promise(resolve => {
             //checking logics
-            console.log(`Liczba potrzebnych kliknięć: ${required_count}\n`);
             var count = new Array(4).fill(0);
             let notification;
             if (document.querySelector('#colours h2')) notification = null; else notification = document.createElement("h2");
@@ -69,8 +67,6 @@ async function colours()
                     clickedBlock.style.boxShadow = "none";
                     await delay(500);
                     count[blockIndex]++;
-                    //checking logics
-                    console.log(`Liczba kliknięć: ${count}\n`);
                         //check if the user clicked the right block
                         if (count.every((val, idx) => val == required_count[idx]))
                         {
