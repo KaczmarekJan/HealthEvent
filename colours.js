@@ -117,5 +117,4 @@ async function colours()
     document.getElementById("colours").appendChild(score);
     await delay(1000);
     score.remove();
-    return "over";
 }

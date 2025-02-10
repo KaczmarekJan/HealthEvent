@@ -13,21 +13,18 @@ async function game()
         switch(Math.floor(Math.random()*1))
         {
             case 0:
-                    is_game_running = await colours();
-                    console.log(is_game_running);
+                    await colours();
                     break;
             default:
                     alert("wrong case number");
                     break;
         }
-    }
-    if(is_game_running == "over")
-    {   
+
         document.getElementById("baner").style.visibility = "visible";
         document.getElementById("m2").style.display = "block";
         document.getElementById("game_content").style.display = "none";
     }
-}`  `
+}
 
 
 //waiting function
