@@ -20,16 +20,16 @@ async function colours()
             "#9D33FF", // Vibrant Purple
             "#FF8C33", // Bright Orange
         ];
+            let sounds = blocks.map((_, index) => {
+                let audio = new Audio(`sound${index}.wav`);
+                audio.preload = "auto"; // Wczytanie dźwięku wcześniej, aby uniknąć opóźnień
+                return audio;
+            });
         for(let i=0;i<blocks.length;i++)    //loop that will go thru all 4 blocks and randomize its color
         {
             let randomIndex = Math.floor(Math.random()*blocks_colours.length);  //randomize blocks colours
             blocks[i].style.display = "block";   //show the block
             blocks[i].style.backgroundColor = blocks_colours.splice(randomIndex, 1)[0];   //delete 1 element from table so that it wont be picked twice
-            blocks[i].addEventListener("click", () => {
-                const sound = new Audio(`sound${i}.wav`);
-                sound.currentTime = 0;
-                sound.play();
-            });   //add event listener
         }
         var required_count = new Array(4).fill(0);  //table with required amounts of clicks
         var indexes_used = new Array();
@@ -44,6 +44,7 @@ async function colours()
             required_count[randomIndex] = randomBlinks;
             for(let j=0;j<randomBlinks;j++) //loop makes blocks blink
             {
+                sounds[randomIndex].play();
                 await delay(500);   //wait
                 blocks[randomIndex].style.boxShadow = `0 0 5px 5px ${blocks[randomIndex].style.backgroundColor}`; //display shadow
                 await delay(500);   //wait
@@ -51,7 +52,11 @@ async function colours()
                 await delay(500);   //wait
             }
         }
-    
+        async function playSound(event) 
+        {
+            sounds[blocks.indexOf(event.currentTarget)].currentTime = 0;
+            sounds[blocks.indexOf(event.currentTarget)].play();
+        }
         await new Promise(resolve => {
             //checking logics
             var count = new Array(4).fill(0);
@@ -74,6 +79,9 @@ async function colours()
                         //check if the user clicked the right block
                         if (count.every((val, idx) => val == required_count[idx]))
                         {
+                            blocks.forEach((block) => {
+                                block.removeEventListener("click", playSound);
+                            });
                             //deleting listeners and resolving promise
                             blocks.forEach(block => block.removeEventListener("click", handleClick));
                             points++;
@@ -88,6 +96,9 @@ async function colours()
                         }
                         else if(count.some((val, idx) => val > required_count[idx]))    //if user clicks too many times
                         {
+                            blocks.forEach((block) => {
+                                block.removeEventListener("click", playSound);
+                            });
                             //deleting listeners and resolving promise
                             blocks.forEach(block => block.removeEventListener("click", handleClick));
                             //notification
@@ -103,12 +114,8 @@ async function colours()
                 
             }
             blocks.forEach(block => block.addEventListener("click", handleClick));
+            blocks.forEach((block) => {block.addEventListener("click", playSound);});
         });
-        blocks.forEach(block => block.removeEventListener("click", () => {
-            const sound = new Audio(`sound${i}.wav`);
-            sound.currentTime = 0;
-            sound.play();
-        }));   //remove event listener
         if(number_of_blocks<4)
         {
             number_of_blocks+=0.5;
