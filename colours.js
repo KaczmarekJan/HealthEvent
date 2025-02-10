@@ -45,11 +45,11 @@ async function colours()
             for(let j=0;j<randomBlinks;j++) //loop makes blocks blink
             {
                 sounds[randomIndex].play();
-                await delay(500);   //wait
+                await delay(250);   //wait
                 blocks[randomIndex].style.boxShadow = `0 0 5px 5px ${blocks[randomIndex].style.backgroundColor}`; //display shadow
-                await delay(500);   //wait
+                await delay(250);   //wait
                 blocks[randomIndex].style.boxShadow = "none";   //hide shadow
-                await delay(500);   //wait
+                await delay(250);   //wait
             }
         }
         async function playSound(event) 
