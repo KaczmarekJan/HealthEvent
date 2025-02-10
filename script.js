@@ -1,6 +1,7 @@
 var level_value;
+var is_game_running;
 //random game
-function game()
+async function game()
 {
     if(document.getElementById("m2").style.display !== "none")
     {
@@ -12,7 +13,8 @@ function game()
         switch(Math.floor(Math.random()*1))
         {
             case 0:
-                    var is_game_running = colours();
+                    is_game_running = await colours();
+                    console.log(is_game_running);
                     break;
             default:
                     alert("wrong case number");
@@ -21,11 +23,11 @@ function game()
     }
     if(is_game_running == "over")
     {   
-        document.getElementById("baner").style.visibility = "block";
+        document.getElementById("baner").style.visibility = "visible";
         document.getElementById("m2").style.display = "block";
         document.getElementById("game_content").style.display = "none";
     }
-}
+}`  `
 
 
 //waiting function
