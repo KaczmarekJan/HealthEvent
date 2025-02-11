@@ -2,6 +2,7 @@ var level_value;
 var is_game_running;
 var points = 0; //number of points
 level(1); //default level
+site_language(6); //default language
 
 function level(x)
 {
@@ -156,7 +157,97 @@ function settings()
             settingsWindow.style.display = "none";
             // Usunięcie event listenera po zamknięciu
             document.removeEventListener("click", closeSettings);
-            document.getElementById("m2").style.display = "block";
         }
     });
+}
+
+//language button
+function site_language(x)
+{
+    if(x == 6)
+    {
+        // Reset all buttons to gray color
+        for(let i=5; i<7; i++) 
+            {
+                document.getElementsByClassName("button-89")[i].style.setProperty('--color', 'gray');
+            }
+            
+            // Set clicked button to purple
+            document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
+            document.getElementById("m1").innerHTML = `
+                <h1>How Memory Training Helps Different Conditions</h1>
+                <br>
+                <h2>Stroke Recovery</h2>
+                <p>Helps rewire the brain, relearn memory skills, and regain independence.</p>
+            
+                <h2>Traumatic Brain Injury (TBI)</h2>
+                <p>Strengthens focus and attention, reducing mental fatigue and improving daily tasks.</p>
+            
+                <h2>Multiple Sclerosis (MS)</h2>
+                <p>Boosts organization with planners and reminders, making life easier and less exhausting.</p>
+            
+                <h2>Depression</h2>
+                <p>Engages the brain, lifts mood, and boosts confidence through enjoyable memory exercises.</p>
+            
+                <h2>Anxiety Disorders</h2>
+                <p>Trains focus, reducing racing thoughts and improving mental clarity.</p>
+            
+                <h2>Long COVID/Post-COVID</h2>
+                <p>Fights "brain fog" with structured exercises, helping rebuild thinking skills.</p>
+            
+                <h2>Chemo Brain</h2>
+                <p>Provides memory strategies to stay sharp and organized during and after treatment.</p>
+            
+                <h2>Parkinson’s Disease</h2>
+                <p>Uses routines and visual reminders to maintain independence and manage memory challenges.</p>
+            
+                <h2>Learning Disabilities (Dyslexia, etc.)</h2>
+                <p>Uses multi-sensory techniques to boost retention and confidence in learning.</p>
+            
+                <h2>Fibromyalgia ("Fibro Fog")</h2>
+                <p>Reduces mental overload with simple memory tricks for a clearer, easier daily life.</p>`;
+    }
+    else if(x == 7)
+    {
+        // Reset all buttons to gray color
+        for(let i=5; i<7; i++) 
+            {
+                document.getElementsByClassName("button-89")[i].style.setProperty('--color', 'gray');
+            }
+            
+            // Set clicked button to purple
+            document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
+            document.getElementById("m1").innerHTML = `
+                    <h1>Kako trening memorije pomaže kod različitih stanja</h1>
+                    <br>
+                    <h2>Oporavak od moždanog udara</h2>
+                    <p>Pomaže u ponovnom povezivanju moždanih funkcija, učenju veština pamćenja i povratku samostalnosti.</p>
+                
+                    <h2>Traumatska povreda mozga (TBI)</h2>
+                    <p>Jača fokus i pažnju, smanjuje mentalni zamor i poboljšava obavljanje svakodnevnih zadataka.</p>
+                
+                    <h2>Multipla skleroza (MS)</h2>
+                    <p>Poboljšava organizaciju pomoću planera i podsetnika, olakšavajući život i smanjujući umor.</p>
+                
+                    <h2>Depresija</h2>
+                    <p>Angažuje mozak, poboljšava raspoloženje i povećava samopouzdanje kroz zabavne vežbe pamćenja.</p>
+                
+                    <h2>Anksiozni poremećaji</h2>
+                    <p>Trenira fokus, smanjujući ubrzane misli i poboljšavajući mentalnu jasnoću.</p>
+                
+                    <h2>Dugi COVID/Post-COVID</h2>
+                    <p>Bori se protiv „moždane magle“ strukturisanim vežbama, pomažući u obnovi kognitivnih veština.</p>
+                
+                    <h2>Hemioterapijska magla</h2>
+                    <p>Obezbeđuje strategije pamćenja za očuvanje bistrine i organizovanosti tokom i nakon lečenja.</p>
+                
+                    <h2>Parkinsonova bolest</h2>
+                    <p>Koristi rutine i vizuelne podsetnike za očuvanje samostalnosti i upravljanje problemima sa pamćenjem.</p>
+                
+                    <h2>Poremećaji u učenju (disleksija, itd.)</h2>
+                    <p>Koristi multisenzorne tehnike za poboljšanje zadržavanja informacija i povećanje samopouzdanja u učenju.</p>
+                
+                    <h2>Fibromijalgija („Fibro magla“)</h2>
+                    <p>Smanjuje mentalno preopterećenje jednostavnim trikovima za pamćenje, olakšavajući svakodnevni život.</p>`;
+    }
 }
