@@ -123,14 +123,26 @@ body
 {
     display: none;
 }
+#game_content
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 #game_content,
 #colours
 {
-    width: 100%;
-    height: 100%;
     display: none;
     justify-content: center;
     align-items: center;
+    align-self: center;
+}
+#game_content > h2 {
+    position: absolute;
+    z-index: 2;
+    top: -30%;
 }
 .colour
 {

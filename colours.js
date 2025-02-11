@@ -5,32 +5,32 @@ async function colours()
     var number_of_blocks = Array.from(document.getElementsByClassName("colour")).length-3;   //number of blocks
     var amount_of_blinks = 1;   //number of blinks
 
-    document.getElementById("colours").style.display = "flex";    //show the blocks
+    document.getElementById("colours").style.display = "flex";
+    var blocks = Array.from(document.getElementsByClassName("colour")); //create a table from existing classes
+    let blocks_colours = 
+    [
+        "#FF5733", // Bright Red Orange
+        "#33FF57", // Neon Green
+        "#337BFF", // Bright Blue
+        "#FF33A8", // Intense Pink
+        "#FFF833", // Lemon Yellow
+        "#33FFF8", // Neon Turquoise
+        "#9D33FF", // Vibrant Purple
+        "#FF8C33", // Bright Orange
+    ];
+        let sounds = blocks.map((_, index) => {
+            let audio = new Audio(`sound${index}.wav`);
+            audio.preload = "auto"; // Wczytanie dźwięku wcześniej, aby uniknąć opóźnień
+            return audio;
+        });
+    for(let i=0;i<blocks.length;i++)    //loop that will go thru all 4 blocks and randomize its color
+    {
+        let randomIndex = Math.floor(Math.random()*blocks_colours.length);  //randomize blocks colours
+        blocks[i].style.display = "block";   //show the block
+        blocks[i].style.backgroundColor = blocks_colours.splice(randomIndex, 1)[0];   //delete 1 element from table so that it wont be picked twice
+    }    //show the blocks
     for(let r=0;r<level_value*4;r++)
     {
-        var blocks = Array.from(document.getElementsByClassName("colour")); //create a table from existing classes
-        let blocks_colours = 
-        [
-            "#FF5733", // Bright Red Orange
-            "#33FF57", // Neon Green
-            "#337BFF", // Bright Blue
-            "#FF33A8", // Intense Pink
-            "#FFF833", // Lemon Yellow
-            "#33FFF8", // Neon Turquoise
-            "#9D33FF", // Vibrant Purple
-            "#FF8C33", // Bright Orange
-        ];
-            let sounds = blocks.map((_, index) => {
-                let audio = new Audio(`sound${index}.wav`);
-                audio.preload = "auto"; // Wczytanie dźwięku wcześniej, aby uniknąć opóźnień
-                return audio;
-            });
-        for(let i=0;i<blocks.length;i++)    //loop that will go thru all 4 blocks and randomize its color
-        {
-            let randomIndex = Math.floor(Math.random()*blocks_colours.length);  //randomize blocks colours
-            blocks[i].style.display = "block";   //show the block
-            blocks[i].style.backgroundColor = blocks_colours.splice(randomIndex, 1)[0];   //delete 1 element from table so that it wont be picked twice
-        }
         var required_count = new Array(4).fill(0);  //table with required amounts of clicks
         var indexes_used = new Array();
         for(let i=0;i<number_of_blocks;i++)    //loop goes thru all 4 blocks
@@ -86,9 +86,8 @@ async function colours()
                             blocks.forEach(block => block.removeEventListener("click", handleClick));
                             points++;
                             //notification
-                            blocks.forEach(block => block.style.display = "none");
-                            notification.textContent = "Correct!";
-                            document.getElementById("colours").appendChild(notification);
+                            notification.innerHTML = "Correct!";
+                            document.getElementById("game_content").insertBefore(notification, document.getElementById("game_content").firstChild);
                             await delay(500);
                             notification.remove();
                             blocks.forEach(block => block.style.display = "block");
@@ -102,9 +101,8 @@ async function colours()
                             //deleting listeners and resolving promise
                             blocks.forEach(block => block.removeEventListener("click", handleClick));
                             //notification
-                            blocks.forEach(block => block.style.display = "none");
-                            notification.textContent = "Wrong!";
-                            document.getElementById("colours").appendChild(notification);
+                            notification.innerHTML = "Wrong!";
+                            document.getElementById("game_content").insertBefore(notification, document.getElementById("game_content").firstChild);
                             await delay(500);
                             notification.remove();
                             blocks.forEach(block => block.style.display = "block");

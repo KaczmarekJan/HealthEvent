@@ -6,7 +6,7 @@ async function numbers()
     for(let i = 0; i < 100; i++) {numbers.push(i);}
     let amount_of_numbers = 3;
     let numbers_range = 90;
-    for(let r=0; r<level_value*2; r++)
+    for(let r=0; r<level_value*3; r++)
     {
         if(level_value == 3 )
         {
@@ -50,7 +50,7 @@ async function numbers()
             content.innerHTML = "Remember all the numbers";
             await delay(1000);
             var equals = new Array(amount_of_numbers).fill(0);
-            for(let i=0; i<amount_of_numbers/5; i++)
+            for(let i=0; i<amount_of_numbers; i++)
             {
                 let RandomIndex = Math.ceil(Math.random()*(numbers.length-numbers_range));
                 equals[i] = numbers[RandomIndex];
@@ -95,7 +95,7 @@ async function numbers()
         else
             numbers_range = 0;
 
-        amount_of_numbers += 0.5;
+        amount_of_numbers++;
     }
     content.innerHTML = `Score: ${points}`;
     await delay(2000);
