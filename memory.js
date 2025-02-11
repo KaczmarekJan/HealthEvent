@@ -29,7 +29,6 @@ async function memory(){
 
         //Render view
         var point_timer_handle = document.createElement("h2");
-        point_timer_handle.innerText = "point_timer";
         document.getElementById("memory").appendChild(point_timer_handle);
 
         var tiles = Array(elements_number).fill(null).map(() => {
@@ -41,6 +40,12 @@ async function memory(){
 
         var remainigTiles = elements_number/2;
         await new Promise(resolve => {
+            var points_countdown = 100*level_value;
+            var points_countdown_timer = setInterval(function (){
+                points_countdown-=5;
+                if(points_countdown<0) points_countdown = 0;
+                point_timer_handle.innerText = "Hurry up! Only " + points_countdown + " points left!"
+            }, 1000);
             var lastTile = null;
             const handleClick = async (event) => {
                 
@@ -68,6 +73,8 @@ async function memory(){
                     lastTile=null;
                 }
                 if(remainigTiles === 0){ //all pairs found game over
+                    clearInterval(points_countdown_timer); //disable points timer
+                    points += points_countdown; //add up all points
                     resolve();
                 }
 
