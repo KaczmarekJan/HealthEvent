@@ -128,3 +128,20 @@ function previous()
     document.getElementById("m" + m_next).style.display = "block";
     updatetitle(m_next);
 }
+
+
+//settings button
+function settings() {
+    const settingsWindow = document.getElementById("settings_window");
+    settingsWindow.style.display = "block";
+    settingsWindow.style.opacity = "1";
+    
+    // Dodanie event listenera na kliknięcie
+    document.addEventListener("click", function closeSettings(e) {
+        if (!settingsWindow.contains(e.target) && e.target.tagName !== 'BUTTON') {
+            settingsWindow.style.display = "none";
+            // Usunięcie event listenera po zamknięciu
+            document.removeEventListener("click", closeSettings);
+        }
+    });
+}
