@@ -11,13 +11,16 @@ async function game()
         document.getElementById("game_content").style.display = "flex";
         level_value = document.getElementById("level").value;
 
-        switch(Math.floor(Math.random()*2))
+        /*switch(Math.floor(Math.random()*3))*/switch(2)
         {
             case 0:
                     await colours();
                     break;
             case 1:
                     await numbers();
+                    break;
+            case 2:
+                    await memory();
                     break;
             default:
                     alert("wrong case number");
