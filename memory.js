@@ -28,12 +28,23 @@ async function memory(){
         console.log(images);
 
         //Render view
-        let tiles = Array(elements_number).fill(0).forEach((element) => {
-            element = document.createElement("div");
+        var tiles = Array(elements_number).fill(null).map(() => {
+            var element = document.createElement("div");
             element.classList.add("memory-tile");
             document.getElementById("memory").appendChild(element);
+            return element;
         });
-        await new Promise(resolve => {});
+        await new Promise(resolve => {
+            const handleClick = async (event) => {
+                const clickedTile = event.target;
+                const tileIndex = tiles.indexOf(clickedTile);
+                console.log("Clicked tile: " + tileIndex);
+                clickedTile.style.backgroundImage = `url('memory/${images[tileIndex]}.jpg')`;
+            }
+            tiles.forEach((element) => {
+                element.addEventListener("click", handleClick);
+            });
+        });
 
         document.getElementById("memory").innerHTML = "";
     }
