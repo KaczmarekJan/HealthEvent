@@ -157,6 +157,10 @@ function settings()
             settingsWindow.style.display = "none";
             // Usunięcie event listenera po zamknięciu
             document.removeEventListener("click", closeSettings);
+            if(document.getElementById("m1").style.display !== "block" && document.getElementById("m3").style.display !== "block")
+            {
+                document.getElementById("m2").style.display = "block";
+            }
         }
     });
 }
