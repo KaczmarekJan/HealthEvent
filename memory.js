@@ -4,10 +4,9 @@ async function memory(){
      
     document.getElementById("memory").style.display = "flex"; //display game
 
-    async function game(level){
+    async function game(elements_number,level){
         //Generate random blocks
         console.log("Generating random blocks:");
-        let elements_number = level;
         let images = Array();
         for(let i = 0; i<elements_number;i+=2){
             let random = 0;
@@ -40,7 +39,7 @@ async function memory(){
 
         var remainigTiles = elements_number/2;
         await new Promise(resolve => {
-            var points_countdown = 100*level_value;
+            var points_countdown = 100*level;
             var points_countdown_timer = setInterval(function (){
                 points_countdown-=5;
                 if(points_countdown<0) points_countdown = 0;
@@ -92,26 +91,26 @@ async function memory(){
 
     switch(level_value){
         case 1:
-            await game(8);
+            await game(8,level_value);
             break;
         
         case 2:
-            await game(16);
+            await game(16,level_value);
             break;
         
         case 3:
-            await game(24);
+            await game(24,level_value);
             break;
 
         case 4:
-            await game(32);
+            await game(32,level_value);
             break;
 
         case 5:
-            await game(8);
-            await game(16);
-            await game(24);
-            await game(32);
+            await game(8,1);
+            await game(16,2);
+            await game(24,3);
+            await game(32,4);
             break;
 
     }
