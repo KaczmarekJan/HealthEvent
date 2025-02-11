@@ -170,13 +170,16 @@ body
     justify-content: center;
     align-items: center;
     align-self: center;
+    flex-wrap: wrap;
 }
 
 .memory-tile{
     width: 150px;
     height: 150px;
     margin: 25px;
-    transform: rotate(-90deg);
+    background-image: url(memory/memory-card.jpg);
+    background-position: center;
+    background-size: cover;
 }
 #settings_window {
     position: absolute;
