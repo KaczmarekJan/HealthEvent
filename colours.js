@@ -21,6 +21,7 @@ async function colours()
         let sounds = blocks.map((_, index) => {
             let audio = new Audio(`sound${index}.wav`);
             audio.preload = "auto"; // Wczytanie dźwięku wcześniej, aby uniknąć opóźnień
+            audio.volume = document.getElementById("volumeSlider").value;
             return audio;
         });
     for(let i=0;i<blocks.length;i++)    //loop that will go thru all 4 blocks and randomize its color

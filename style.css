@@ -171,7 +171,6 @@ body
     align-self: center;
     flex-wrap: wrap;
 }
-
 .memory-tile{
     width: 150px;
     height: 150px;
@@ -188,17 +187,18 @@ body
     border-radius: 20px;
     background-color: rgb(0,0,0);
     z-index: 9999;
-}
-#settings_window > *{
-    padding-top: 10%;
-    padding-left: 10%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
 }
 /* CSS */
-.button-89 {
+.button-89 
+{
   --b: 3px;   /* border thickness */
   --s: .45em; /* size of the corner */
   --color: gray;
-  
+  margin: 20px;
   padding: calc(.5em + var(--s)) calc(.9em + var(--s));
   color: var(--color);
   --_p: var(--s);
