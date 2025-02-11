@@ -6,7 +6,8 @@ level(1); //default level
 function level(x)
 {
     // Reset all buttons to gray color
-    for(let i=0; i<5; i++) {
+    for(let i=0; i<5; i++) 
+    {
         document.getElementsByClassName("button-89")[i].style.setProperty('--color', 'gray');
     }
     
@@ -47,12 +48,11 @@ async function game()
     }
 }
 
-
 //waiting function
-function delay(ms) {
+function delay(ms) 
+{
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
 
 //timekeeper
 function updatetime() 
@@ -66,7 +66,6 @@ function updatetime()
 setInterval(updatetime, 500);
 updatetime();
 
-
 //moving background
 document.addEventListener("mousemove", (e) => 
     {
@@ -74,7 +73,6 @@ document.addEventListener("mousemove", (e) =>
         "translate(calc(-50% + " + ((e.clientX / window.innerWidth - 0.5) * 60) + "px), " + 
                     "calc(-50% + " + ((e.clientY / window.innerHeight - 0.5) * 60) + "px))";
     });
-
 
 //next page
 var m_next = 2;
@@ -95,7 +93,6 @@ function next()
     document.getElementById("m" + m_next).style.display = "block";
     updatetitle(m_next);
 }
-
 
 //update page title
 function updatetitle(m_next)
@@ -127,7 +124,6 @@ function updatetitle(m_next)
     document.getElementById("title").innerHTML = text;
 }
 
-
 //previous page
 function previous() 
 {
@@ -146,9 +142,9 @@ function previous()
     updatetitle(m_next);
 }
 
-
 //settings button
-function settings() {
+function settings() 
+{
     document.getElementById("m2").style.display = "none";
     const settingsWindow = document.getElementById("settings_window");
     settingsWindow.style.display = "block";
