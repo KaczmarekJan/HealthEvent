@@ -164,3 +164,17 @@ body
     border: none;
     color: white;
 }
+
+#memory{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.memory-tile{
+    width: 150px;
+    height: 150px;
+    margin: 25px;
+    transform: rotate(-90deg);
+}

@@ -126,4 +126,5 @@ async function colours()
     document.getElementById("colours").appendChild(score);
     await delay(2000);
     score.remove();
+    document.getElementById("colours").style.display = "none";
 }

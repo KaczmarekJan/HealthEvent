@@ -99,4 +99,5 @@ async function numbers()
     }
     content.innerHTML = `Score: ${points}`;
     await delay(2000);
+    document.getElementById("numbers").style.display = "none";
 }
