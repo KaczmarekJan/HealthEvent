@@ -28,6 +28,10 @@ async function memory(){
         console.log(images);
 
         //Render view
+        var point_timer_handle = document.createElement("h2");
+        point_timer_handle.innerText = "point_timer";
+        document.getElementById("memory").appendChild(point_timer_handle);
+
         var tiles = Array(elements_number).fill(null).map(() => {
             var element = document.createElement("div");
             element.classList.add("memory-tile");

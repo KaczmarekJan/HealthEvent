@@ -179,6 +179,12 @@ body
     background-position: center;
     background-size: cover;
 }
+#memory > h2 {
+    position: absolute;
+    z-index: 2;
+    top: -30%;
+}
+
 #settings_window {
     position: absolute;
     display: none;
