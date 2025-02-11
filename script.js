@@ -25,7 +25,7 @@ async function game()
         document.getElementById("m2").style.display = "none";
         document.getElementById("game_content").style.display = "flex";
 
-        /*switch(Math.floor(Math.random()*3))*/switch(0)
+        /*switch(Math.floor(Math.random()*3))*/switch(3)
         {
             case 0:
                     await colours();
@@ -35,6 +35,9 @@ async function game()
                     break;
             case 2:
                     await memory();
+                    break;
+            case 3: 
+                    await sequence();
                     break;
             default:
                     alert("wrong case number");
