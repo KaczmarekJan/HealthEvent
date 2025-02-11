@@ -1,6 +1,21 @@
 var level_value;
 var is_game_running;
 var points = 0; //number of points
+level(1); //default level
+
+function level(x)
+{
+    // Reset all buttons to gray color
+    for(let i=0; i<5; i++) {
+        document.getElementsByClassName("button-89")[i].style.setProperty('--color', 'gray');
+    }
+    
+    // Set clicked button to purple
+    document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
+    
+    level_value = x;
+}
+
 //random game
 async function game()
 {
@@ -9,7 +24,6 @@ async function game()
         document.getElementById("baner").style.visibility = "hidden";
         document.getElementById("m2").style.display = "none";
         document.getElementById("game_content").style.display = "flex";
-        level_value = document.getElementById("level").value;
 
         /*switch(Math.floor(Math.random()*3))*/switch(0)
         {
@@ -135,6 +149,7 @@ function previous()
 
 //settings button
 function settings() {
+    document.getElementById("m2").style.display = "none";
     const settingsWindow = document.getElementById("settings_window");
     settingsWindow.style.display = "block";
     settingsWindow.style.opacity = "1";
@@ -145,6 +160,7 @@ function settings() {
             settingsWindow.style.display = "none";
             // Usunięcie event listenera po zamknięciu
             document.removeEventListener("click", closeSettings);
+            document.getElementById("m2").style.display = "block";
         }
     });
 }
