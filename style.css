@@ -168,7 +168,6 @@ body
 #memory{
     display: none;
     justify-content: center;
-    align-items: center;
     align-self: center;
     flex-wrap: wrap;
 }

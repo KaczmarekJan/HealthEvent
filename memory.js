@@ -3,11 +3,11 @@ async function memory(){
     var number_of_images = 40; //number of images in folder
      
     document.getElementById("memory").style.display = "flex"; //display game
-    for(let level = 0;level<3;level++){
 
+    async function game(level){
         //Generate random blocks
         console.log("Generating random blocks:");
-        let elements_number = Math.pow((level*2)+4,2);
+        let elements_number = level;
         let images = Array();
         for(let i = 0; i<elements_number;i+=2){
             let random = 0;
@@ -52,16 +52,16 @@ async function memory(){
                 if (lastTile === null || lastTile === tileIndex) { //first click
                     lastTile = tileIndex;
                 } else {
-                   await delay(1000);
-                   if(images[tileIndex] === images[lastTile]){ //pair found
-                          clickedTile.style.visibility = "hidden";
-                          tiles[lastTile].style.visibility = "hidden";
-                          remainigTiles--;
-                   }else{ //pair not found
+                    await delay(1000);
+                    if(images[tileIndex] === images[lastTile]){ //pair found
+                            clickedTile.style.visibility = "hidden";
+                            tiles[lastTile].style.visibility = "hidden";
+                            remainigTiles--;
+                    }else{ //pair not found
                             clickedTile.style.backgroundImage = "";
                             tiles[lastTile].style.backgroundImage = "";
-                   }
-                   lastTile=null;
+                    }
+                    lastTile=null;
                 }
                 if(remainigTiles === 0){ //all pairs found game over
                     resolve();
@@ -77,6 +77,33 @@ async function memory(){
         });
 
         document.getElementById("memory").innerHTML = "";
+    }    
+
+    switch(level_value){
+        case 1:
+            await game(8);
+            break;
+        
+        case 2:
+            await game(16);
+            break;
+        
+        case 3:
+            await game(24);
+            break;
+
+        case 4:
+            await game(32);
+            break;
+
+        case 5:
+            await game(8);
+            await game(16);
+            await game(24);
+            await game(32);
+            break;
+
     }
+
     document.getElementById("memory").style.display = "none";
 }
