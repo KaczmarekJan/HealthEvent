@@ -27,7 +27,7 @@ async function game()
         document.getElementById("m2").style.display = "none";
         document.getElementById("game_content").style.display = "flex";
 
-        /*switch(Math.floor(Math.random()*3))*/switch(2)
+        switch(Math.floor(Math.random()*3))
         {
             case 0:
                     await colours();
@@ -157,6 +157,10 @@ function settings()
             settingsWindow.style.display = "none";
             // Usunięcie event listenera po zamknięciu
             document.removeEventListener("click", closeSettings);
+            if(document.getElementById("m1").style.display !== "block" && document.getElementById("m3").style.display !== "block")
+            {
+                document.getElementById("m2").style.display = "block";
+            }
         }
     });
 }
