@@ -23,9 +23,10 @@ async function numbers()
             {
                 let RandomIndex = Math.ceil(Math.random()*(numbers.length-numbers_range));
                 equals += numbers[RandomIndex];
-                content.innerHTML = numbers.splice(RandomIndex, 1)[0];
+                content.innerHTML = "<p class='numerki'>"+numbers.splice(RandomIndex, 1)[0]+"</p>";
                 await delay(1000);
             }
+            document.getElementById("numbers_instruction").innerHTML = nmb_placeholder;
             content.innerHTML = `<input type="number" id="userAnswer" placeholder="Enter">`;
             await new Promise(resolve => {
                 const userAnswer = document.getElementById("userAnswer");
@@ -35,6 +36,7 @@ async function numbers()
                         {
                             if(userAnswer.value == equals)
                                 {
+                                    document.getElementById("numbers_instruction").innerHTML = "";
                                     content.innerHTML = nmb_correct;
                                     await delay(1000);
                                     points++;
@@ -42,6 +44,7 @@ async function numbers()
                                 }
                             else
                                 {
+                                    document.getElementById("numbers_instruction").innerHTML = "";
                                     content.innerHTML = nmb_incorrect;
                                     await delay(1000);
                                     resolve();
@@ -63,7 +66,8 @@ async function numbers()
                 content.innerHTML = numbers.splice(RandomIndex, 1)[0];
                 await delay(1000);
             }
-            content.innerHTML = `<input type="number" id="userAnswer" placeholder="${nmb_placeholder}.">`;
+            document.getElementById("numbers_instruction").innerHTML = nmb_placeholder;
+            content.innerHTML = `<input type="number" id="userAnswer" placeholder="Enter">`;
             var answer = new Array(amount_of_numbers).fill(0);
             await new Promise(resolve => {
                 const userAnswer = document.getElementById("userAnswer");
@@ -86,12 +90,14 @@ async function numbers()
             });
             if(answer.every((val, idx) => val == equals[idx]))
                 {
+                    document.getElementById("numbers_instruction").innerHTML = "";
                     content.innerHTML = nmb_correct;
                     await delay(1000);
                     points++;
                 }
             else
                 {
+                    document.getElementById("numbers_instruction").innerHTML = "";
                     content.innerHTML = nmb_incorrect;
                     await delay(1000);
                 }
