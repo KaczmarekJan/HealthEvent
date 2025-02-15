@@ -27,7 +27,7 @@ async function game()
         document.getElementById("m2").style.display = "none";
         document.getElementById("game_content").style.display = "flex";
 
-        /*switch(Math.floor(Math.random()*3))*/switch(3)
+        /*switch(Math.floor(Math.random()*3))*/switch(1)
         {
             case 0:
                     await colours();
@@ -164,6 +164,11 @@ function site_language(x)
             numberbutremeber = "Remember all the numbers";
             nmb_correct = "Correct!";
             nmb_incorrect = "Incorrect!";
+            nmb_score = "Score: ";
+            nmb_placeholder = "Input the numbers that were displayed one by one.";
+            mem_nopoints = "No more points :(";
+            mem_hurryup = "Hurry up! Only ";
+            mem_pointsleft = "points left!";
 
             //change main page title
             document.getElementsByTagName("title")[0].innerHTML = "Memory Training";
@@ -250,6 +255,12 @@ function site_language(x)
             numberbutremeber = "Zapamtite sledeće brojeve: ";
             nmb_correct = "Tačno!";
             nmb_incorrect = "Netačno!";
+            nmb_score = "Rezultat: ";
+            nmb_placeholder = "Redno ukucajte brojeve koji su bili prikazani.";
+            mem_nopoints = "Ostali ste bez poena :(";
+            mem_hurryup = "Požuri! Ostalo ti je samo ";
+            mem_pointsleft = "poena!";
+
             //change start button game
             document.getElementById("m2").innerHTML = "<p>Kliknite bilo gde da počnete.</p>";
             // INFORMATION
