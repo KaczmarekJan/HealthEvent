@@ -1,8 +1,6 @@
 var level_value;
 var is_game_running;
 var points = 0; //number of points
-var instchange_numbers = "Sum all the numbers";
-var numberbutremeber = "Remember all the numbers";
 level(1); //default level
 site_language(5); //default language
 
@@ -162,6 +160,8 @@ function site_language(x)
             //numbers variables
             instchange_numbers = "Sum all the numbers";
             numberbutremeber = "Remember all the numbers";
+            nmb_correct = "Correct!";
+            nmb_incorrect = "Incorrect!";
 
             //change main page title
             document.getElementsByTagName("title")[0].innerHTML = "Memory Training";
@@ -243,8 +243,11 @@ function site_language(x)
             document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
 
             //numbers variables
+            
             instchange_numbers = "Saberite sve brojeve: ";
-
+            numberbutremeber = "Zapamtite sledeće brojeve: ";
+            nmb_correct = "Tačno!";
+            nmb_incorrect = "Netačno!";
             //change start button game
             document.getElementById("m2").innerHTML = "<p>Kliknite bilo gde da počnete.</p>";
             // INFORMATION

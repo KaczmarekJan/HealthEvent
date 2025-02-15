@@ -1,3 +1,8 @@
+var instchange_numbers = "Sum all the numbers";
+var numberbutremeber = "Remember all the numbers";
+var nmb_correct = "Correct!";
+var nmb_incorrect = "Incorrect!";
+
 async function numbers()
 {
     document.getElementById("numbers").style.display = "flex";
@@ -29,14 +34,14 @@ async function numbers()
                         {
                             if(userAnswer.value == equals)
                                 {
-                                    content.innerHTML = "Correct!";
+                                    content.innerHTML = nmb_correct;
                                     await delay(1000);
                                     points++;
                                     resolve();
                                 }
                             else
                                 {
-                                    content.innerHTML = "Incorrect!";
+                                    content.innerHTML = nmb_incorrect;
                                     await delay(1000);
                                     resolve();
                                 }
