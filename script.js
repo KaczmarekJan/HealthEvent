@@ -250,7 +250,6 @@ function site_language(x)
             document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
 
             //numbers variables
-            
             instchange_numbers = "Saberite sve brojeve: ";
             numberbutremeber = "Zapamtite sledeće brojeve: ";
             nmb_correct = "Tačno!";
@@ -274,6 +273,7 @@ function site_language(x)
             
             //settings window volume nejm
             document.getElementById("Volume").innerHTML = "Glasnoća: "; 
+
             //change title
             text1 = "<strong>Artikl</strong>";
             text2 = "<strong>Igra</strong>";
@@ -283,6 +283,7 @@ function site_language(x)
                 if(document.getElementById("m"+i).style.display == "block")
                     document.getElementById("title").innerHTML = window["text"+i];
             }
+
             //buttons
             document.getElementById("level1").innerHTML = "Lako";
             document.getElementById("level2").innerHTML = "Srednje";
