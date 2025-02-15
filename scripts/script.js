@@ -195,7 +195,7 @@ function site_language(x)
             document.getElementById("level1").innerHTML = "Easy";
             document.getElementById("level2").innerHTML = "Normal";
             document.getElementById("level3").innerHTML = "Hard";
-            document.getElementById("level4").innerHTML = "Unlimited";
+            document.getElementById("level4").innerHTML = "SuperHard";
             
             //language
             document.getElementById("Language").innerHTML = "Language: "
