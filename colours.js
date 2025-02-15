@@ -47,9 +47,11 @@ async function colours()
             {
                 sounds[randomIndex].play();
                 await delay(250);   //wait
-                blocks[randomIndex].style.boxShadow = `0 0 5px 5px ${blocks[randomIndex].style.backgroundColor}`; //display shadow
+                //blocks[randomIndex].style.boxShadow = `0 0 5px 5px ${blocks[randomIndex].style.backgroundColor}`; //display shadow
+                blocks[randomIndex].style.transform = `scale(1.2)`; //scale up
                 await delay(250);   //wait
-                blocks[randomIndex].style.boxShadow = "none";   //hide shadow
+                //blocks[randomIndex].style.boxShadow = "none";   //hide shadow
+                blocks[randomIndex].style.transform = `scale(1)`; //scale down
                 await delay(250);   //wait
             }
         }
@@ -72,9 +74,11 @@ async function colours()
                     const blockIndex = blocks.indexOf(clickedBlock);
                     
                     //clicked block animation
-                    clickedBlock.style.boxShadow = `0 0 5px 5px ${clickedBlock.style.backgroundColor}`;
-                    await delay(500);
-                    clickedBlock.style.boxShadow = "none";
+                    //clickedBlock.style.boxShadow = `0 0 5px 5px ${clickedBlock.style.backgroundColor}`;
+                    clickedBlock.style.transform = `scale(1.2)`
+                    await delay(250);
+                    //clickedBlock.style.boxShadow = "none";
+                    clickedBlock.style.transform = `scale(1)`;
                     await delay(500);
                     count[blockIndex]++;
                         //check if the user clicked the right block

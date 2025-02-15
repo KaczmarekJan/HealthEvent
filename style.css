@@ -8,6 +8,25 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16pt;
 }
+@media only screen and (max-width: 360px) {
+    .memory-tile{
+        width: 100px;
+        height: 100px;
+    }
+}
+@media only screen and (min-width: 361px) and (max-width: 660px) {
+    .memory-tile{
+        width: 130px;
+        height: 130px;
+
+    }
+}
+@media only screen and (min-width: 661px) {
+    .memory-tile{
+        width: 150px;
+        height: 150px;
+    }
+}
 body
 {
     margin: 0;
@@ -46,7 +65,14 @@ body
 }
 #baner>section
 {
-    min-width: max-content;
+    display: flex;
+    width: 20%;
+    justify-content: center;
+}
+#baner_buttons_container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20%;
 }
 .slider_button 
 {
@@ -125,6 +151,7 @@ body
 }
 #game_content
 {
+    height: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -134,10 +161,12 @@ body
 #game_content,
 #colours
 {
+    width: 90dvw;
     display: none;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    overflow: auto;
 }
 #game_content > h2 {
     position: absolute;
@@ -148,33 +177,55 @@ body
 {
     width: 150px;
     height: 150px;
-    margin: 25px;
-    transform: rotate(-90deg);
+    margin: 2%;
+    transition: 0.2s ease-in-out;
 }
 #numbers
 {
     display: none;
+    height: 100%;
+    width: 100%;
     justify-content: center;
     align-items: center;
+}
+#numbers > div{
+    text-align: center;
+    padding: none;
 }
 #userAnswer
 {
     background-color: rgba(50, 50, 50, 0.3);
-    padding: 5px;
+    padding: 15px;
     border: none;
     color: white;
+    text-align: center;
+    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    transition: 0.4s ease-in-out
+}
+#userAnswer:focus
+{
+    transform: scale(1.2);
+    outline: none;
+    background-color: rgba(255, 63, 239, 0.3);
+    padding: 15px;
+    border: none;
+    color: white;
+    text-align: center;
+    box-shadow: inset 0px 0px 16px rgba(255, 255, 255, 1);
+    border-radius: 15px;
 }
 
 #memory{
+    height: 80dvh;
     display: none;
+    align-items: flex-start;
     justify-content: center;
-    align-self: center;
     flex-wrap: wrap;
+    overflow: auto;
 }
 .memory-tile{
-    width: 150px;
-    height: 150px;
-    margin: 25px;
+    margin: 2%;
     background-image: url(memory/memory-card.jpg);
     background-position: center;
     background-size: cover;
