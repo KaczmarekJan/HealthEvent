@@ -227,7 +227,7 @@ function site_language(x)
             for(let i=1; i<4; i++)
             {
                 if(document.getElementById("m"+i).style.display == "block")
-                    document.getElementById("m"+i).innerHTML = `$(text+i)`;
+                    document.getElementById("title").innerHTML = `$(text+i)`;
             }
 
             //change main page title
