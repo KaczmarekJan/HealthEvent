@@ -2,7 +2,7 @@ var level_value;
 var is_game_running;
 var points = 0; //number of points
 level(1); //default level
-site_language(6); //default language
+site_language(5); //default language
 
 function level(x)
 {
@@ -92,39 +92,9 @@ function next()
     }
     document.getElementById("m" + m_previous).style.display = "none";
     document.getElementById("m" + m_next).style.display = "block";
-    updatetitle(m_next);
+    title_text = "text"+m_next;
+    updatetitle(title_text);
 }
-
-//update page title
-function updatetitle(m_next)
-{
-    let text = "error";
-    switch (m_next)
-    {
-        case 1:
-            {
-                text = "<strong>Article</strong>";
-                break;
-            }
-        case 2:
-            {
-                text = "<strong>Game</strong>";
-                break;
-            }
-        case 3:
-            {
-                text = "<strong>Ranking</strong>";
-                break;
-            }
-        default:
-            {
-                text = "Another Error";
-                break;
-            }
-    }
-    document.getElementById("title").innerHTML = text;
-}
-
 //previous page
 function previous() 
 {
@@ -140,9 +110,17 @@ function previous()
     }
     document.getElementById("m" + m_previous).style.display = "none";
     document.getElementById("m" + m_next).style.display = "block";
-    updatetitle(m_next);
+    title_text = "text"+m_next;
+    updatetitle(title_text);
 }
-
+var text1 = "<strong>Article</strong>";
+var text2 = "<strong>Game</strong>";
+var text3 = "<strong>Ranking</strong>";
+//update page title
+function updatetitle(title_text)
+{
+    document.getElementById("title").innerHTML = window[title_text];
+}
 //settings button
 function settings() 
 {
@@ -168,16 +146,33 @@ function settings()
 //language button
 function site_language(x)
 {
-    if(x == 6)
+    if(x == 5)
     {
         // Reset all buttons to gray color
-        for(let i=5; i<7; i++) 
+        for(let i=4; i<6; i++) 
             {
                 document.getElementsByClassName("button-89")[i].style.setProperty('--color', 'gray');
             }
-            
             // Set clicked button to purple
             document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
+
+            //change main page title
+            document.getElementsByTagName("title")[0].innerHTML = "Memory Training";
+
+            //change start button game
+            document.getElementById("m2").innerHTML = "<p>Click anywhere to start</p>";
+
+            //change title
+            text1 = "<strong>Article</strong>";
+            text2 = "<strong>Game</strong>";
+            text3 = "<strong>Ranking</strong>";
+            for(let i=1; i<4; i++)
+            {
+                if(document.getElementById("m"+i).style.display == "block")
+                    document.getElementById("m"+i).innerHTML = `$(text+i)`;
+            }
+
+            //change article language
             document.getElementById("m1").innerHTML = `
                 <h1>How Memory Training Helps Different Conditions</h1>
                 <br>
@@ -211,16 +206,34 @@ function site_language(x)
                 <h2>Fibromyalgia ("Fibro Fog")</h2>
                 <p>Reduces mental overload with simple memory tricks for a clearer, easier daily life.</p>`;
     }
-    else if(x == 7)
+    else if(x == 6)
     {
         // Reset all buttons to gray color
-        for(let i=5; i<7; i++) 
+        for(let i=4; i<6; i++) 
             {
                 document.getElementsByClassName("button-89")[i].style.setProperty('--color', 'gray');
             }
             
             // Set clicked button to purple
             document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
+
+            //change start button game
+            document.getElementById("m2").innerHTML = "<p>Кликните било где да почнете</p>";
+
+            //change title
+            text1 = "<strong>Чланак</strong>";
+            text2 = "<strong>Игра</strong>";
+            text3 = "<strong>Рангирање</strong>";
+            for(let i=1; i<4; i++)
+            {
+                if(document.getElementById("m"+i).style.display == "block")
+                    document.getElementById("m"+i).innerHTML = `$(text+i)`;
+            }
+
+            //change main page title
+            document.getElementsByTagName("title")[0].innerHTML = "Мемори Траинер";
+
+            //change article language
             document.getElementById("m1").innerHTML = `
                     <h1>Kako trening memorije pomaže kod različitih stanja</h1>
                     <br>
