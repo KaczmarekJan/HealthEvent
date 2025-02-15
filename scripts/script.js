@@ -59,17 +59,19 @@ function delay(ms)
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-//timekeeper
-function updatetime() 
-{
+function updatetime() {
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
     const minutes = now.getMinutes().toString().padStart(2, '0');
-    const seconds = now.getSeconds().toString().padStart(2, '0');
-    document.getElementById("time").innerText = hours+":"+minutes+":"+seconds;
+    const seconds = (60 - now.getSeconds()).toString().padStart(2, '0'); // Odliczanie od 60 w dół
+
+    document.getElementById("time").innerText = `${hours}:${minutes}:${seconds}`;
 }
-setInterval(updatetime, 500);
-updatetime();
+setInterval(updatetime, 1000); // Aktualizacja co sekundę
+updatetime(); // Pierwsze wywołanie od razu, bez czekania 1 sekundy
+
+setInterval(updatetime, 1000); // Update every 1 second
+updatetime(); // Initial call to prevent delay
 
 //moving background
 document.addEventListener("mousemove", (e) => 
