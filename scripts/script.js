@@ -2,7 +2,9 @@ var level_value;
 var is_game_running;
 var points = 0; //number of points
 level(2); //default level
+var m_current = 2; //site page number
 site_language(5); //default language
+
 
 function level(x)
 {
@@ -82,41 +84,30 @@ document.addEventListener("mousemove", (e) =>
     });
 
 //next page
-var m_next = 2;
-var m_previous = 1;
+
 function next() 
 {
-    if (m_next == 3) 
+    document.getElementById("m" + m_current).style.display = "none";
+    m_current++;
+    if (m_current == 4) 
     {
-        m_next = 1;
-        m_previous = 3;
+        m_current = 1;
     } 
-    else 
-    {
-        m_previous = m_next;
-        m_next += 1;
-    }
-    document.getElementById("m" + m_previous).style.display = "none";
-    document.getElementById("m" + m_next).style.display = "block";
-    title_text = "text"+m_next;
+    document.getElementById("m" + m_current).style.display = "block";
+    title_text = "text"+m_current;
     updatetitle(title_text);
 }
 //previous page
 function previous() 
 {
-    if (m_next == 1) 
+    document.getElementById("m" + m_current).style.display = "none";
+    m_current--;
+    if (m_current == 0) 
     {
-        m_next = 3;
-        m_previous = 1;
-    }
-    else 
-    {
-        m_previous = m_next;
-        m_next -= 1;
-    }
-    document.getElementById("m" + m_previous).style.display = "none";
-    document.getElementById("m" + m_next).style.display = "block";
-    title_text = "text"+m_next;
+            m_current = 3;
+    } 
+    document.getElementById("m" + m_current).style.display = "block";
+    title_text = "text"+m_current;
     updatetitle(title_text);
 }
 var text1 = "<strong>Article</strong>";
@@ -152,13 +143,13 @@ function settings()
 //language button
 function site_language(x)
 {
+    // Reset all buttons to gray color
+    for(let i=4; i<6; i++) 
+        {
+            document.getElementsByClassName("button-89")[i].style.setProperty('--color', 'gray');
+        }
     if(x == 5)
     {
-        // Reset all buttons to gray color
-        for(let i=4; i<6; i++) 
-            {
-                document.getElementsByClassName("button-89")[i].style.setProperty('--color', 'gray');
-            }
             // Set clicked button to purple
             document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
 
@@ -202,12 +193,8 @@ function site_language(x)
             text1 = "<strong>Article</strong>";
             text2 = "<strong>Game</strong>";
             text3 = "<strong>Ranking</strong>";
-            for(let i=1; i<4; i++)
-            {
-                if(document.getElementById("m"+i).style.display == "block")
-                    document.getElementById("title").innerHTML = window["text"+i];
-            }
 
+            document.getElementById("title").innerHTML = window["text"+m_current];
             //change article language
             document.getElementById("m1").innerHTML = `
                 <h1>How Memory Training Helps Different Conditions</h1>
@@ -244,11 +231,6 @@ function site_language(x)
     }
     else if(x == 6)
     {
-        // Reset all buttons to gray color
-        for(let i=4; i<6; i++) 
-            {
-                document.getElementsByClassName("button-89")[i].style.setProperty('--color', 'gray');
-            }
             // Set clicked button to purple
             document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
 
@@ -281,11 +263,7 @@ function site_language(x)
             text1 = "<strong>Artikl</strong>";
             text2 = "<strong>Igra</strong>";
             text3 = "<strong>Rangiranje</strong>";
-            for(let i=1; i<4; i++)
-            {
-                if(document.getElementById("m"+i).style.display == "block")
-                    document.getElementById("title").innerHTML = window["text"+i];
-            }
+            document.getElementById("title").innerHTML = window["text"+m_current];
 
             //buttons
             document.getElementById("level1").innerHTML = "Lako";
