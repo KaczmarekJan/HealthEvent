@@ -85,7 +85,7 @@ async function sequence() {
 
 
             for (i = 1; i < order.length; i++) {
-                document.getElementById(prefixLetter + order[i]).style.backgroundColor = "rgb(248, 88, 200)";
+                document.getElementById(prefixLetter + order[i]).style.backgroundColor = "#a637e7";
                 sound(order[i])
                 await delay(500)
                 document.getElementById(prefixLetter + order[i]).style.backgroundColor = "";
@@ -94,7 +94,7 @@ async function sequence() {
             var randomField = randomTo(fieldNum);
             order[turn] = randomField;
             sound(randomField)
-            document.getElementById(prefixLetter + randomField).style.backgroundColor = "rgb(248, 88, 200)";
+            document.getElementById(prefixLetter + randomField).style.backgroundColor = "#a637e7";
             await delay(500)
             document.getElementById(prefixLetter + randomField).style.backgroundColor = "";
             unlockClicks();
@@ -108,7 +108,7 @@ async function sequence() {
             clicksNum++
             if (order[clicksNum] == fieldId2.substring(1)) {
                 disableClicks()
-                document.getElementById(fieldId2).style.backgroundColor = "rgb(248, 88, 200)";
+                document.getElementById(fieldId2).style.backgroundColor = "#a637e7";
                 await delay(200)
                 document.getElementById(fieldId2).style.backgroundColor = "";
                 unlockClicks()
