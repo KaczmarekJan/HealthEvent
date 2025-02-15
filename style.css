@@ -301,6 +301,10 @@ p{
     flex-wrap: wrap;
     overflow: auto;
 }
+#memory > h2 {
+    width: 100%;
+    text-align: center;
+}
 .memory-tile{
     margin: 2%;
     background-image: url(memory/memory-card.jpg);
