@@ -10,7 +10,7 @@ async function numbers()
     {
         if(level_value == 3 )
         {
-            content.innerHTML = "Sum all the numbers";
+            content.innerHTML = instchange_numbers;
             await delay(1000);
             let equals = 0;
             for(let i=0; i<amount_of_numbers; i++)
@@ -47,7 +47,7 @@ async function numbers()
         }
         else
         {
-            content.innerHTML = "Remember all the numbers";
+            content.innerHTML = numberbutremeber;
             await delay(1000);
             var equals = new Array(amount_of_numbers).fill(0);
             for(let i=0; i<amount_of_numbers; i++)
