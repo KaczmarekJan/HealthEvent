@@ -9,7 +9,7 @@ site_language(5); //default language
 function level(x)
 {
     // Reset all buttons to gray color
-    for(let i=0; i<5; i++) 
+    for(let i=0; i<4; i++)
     {
         document.getElementsByClassName("button-89")[i].style.setProperty('--color', 'gray');
     }
@@ -29,8 +29,7 @@ async function game()
         document.getElementById("m2").style.display = "none";
         document.getElementById("game_content").style.display = "flex";
 
-        //switch(Math.floor(Math.random()*3))
-        switch(0)
+        /*switch(Math.floor(Math.random()*3))*/switch(3)
         {
             case 0:
                     await colours();
@@ -40,6 +39,9 @@ async function game()
                     break;
             case 2:
                     await memory();
+                    break;
+            case 3: 
+                    await sequence();
                     break;
             default:
                     alert("wrong case number");
@@ -160,7 +162,8 @@ function site_language(x)
             document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
 
             //numbers variables
-            instchange_numbers = "Saberite sve brojeve: ";
+            instchange_numbers = "Sum all the numbers";
+            numberbutremeber = "Remember all the numbers";
 
             //change main page title
             document.getElementsByTagName("title")[0].innerHTML = "Memory Training";
@@ -194,7 +197,7 @@ function site_language(x)
             for(let i=1; i<4; i++)
             {
                 if(document.getElementById("m"+i).style.display == "block")
-                    document.getElementById("m"+i).innerHTML = `$(text+i)`;
+                    document.getElementById("title").innerHTML = window["text"+i];
             }
 
             //change article language
@@ -264,7 +267,7 @@ function site_language(x)
             for(let i=1; i<4; i++)
             {
                 if(document.getElementById("m"+i).style.display == "block")
-                    document.getElementById("title").innerHTML = `$(text+i)`;
+                    document.getElementById("title").innerHTML = window["text"+i];
             }
             //buttons
             document.getElementById("level1").innerHTML = "Lako";
