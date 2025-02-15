@@ -1,7 +1,7 @@
 var level_value;
 var is_game_running;
 var points = 0; //number of points
-level(1); //default level
+level(2); //default level
 site_language(5); //default language
 
 function level(x)
