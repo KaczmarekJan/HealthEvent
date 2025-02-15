@@ -159,6 +159,9 @@ function site_language(x)
             // Set clicked button to purple
             document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
 
+            //numbers variables
+            instchange_numbers = "Saberite sve brojeve: ";
+
             //change main page title
             document.getElementsByTagName("title")[0].innerHTML = "Memory Training";
 
@@ -235,9 +238,11 @@ function site_language(x)
             {
                 document.getElementsByClassName("button-89")[i].style.setProperty('--color', 'gray');
             }
-            instchange_numbers = "Saberite sve brojeve: ";
             // Set clicked button to purple
             document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
+
+            //numbers variables
+            instchange_numbers = "Saberite sve brojeve: ";
 
             //change start button game
             document.getElementById("m2").innerHTML = "<p>Kliknite bilo gde da počnete.</p>";
@@ -259,7 +264,7 @@ function site_language(x)
             for(let i=1; i<4; i++)
             {
                 if(document.getElementById("m"+i).style.display == "block")
-                    document.getElementById("m"+i).innerHTML = `$(text+i)`;
+                    document.getElementById("title").innerHTML = `$(text+i)`;
             }
             //buttons
             document.getElementById("level1").innerHTML = "Lako";
