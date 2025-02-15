@@ -19,21 +19,18 @@ function level(x)
     level_value = x;
 }
 
-// Funkcja startująca grę
 async function game() {
     if (document.getElementById("m2").style.display !== "none") 
     {
-        is_game_running = true; // Gra startuje
+        is_game_running = true;
 
         document.getElementById("baner_menu").style.display = "none";
         document.getElementById("baner_game").style.display = "flex";
         document.getElementById("m2").style.display = "none";
         document.getElementById("game_content").style.display = "flex";
 
-        // Dodanie event listenera na kliknięcia na `#container`, ale ignorowanie `#game_content`
         document.getElementById("container").addEventListener("click", returnToMainMenu, true);
 
-        // Uruchomienie losowej gry
         //switch (Math.floor(Math.random() * 2))
         switch(1)
         {
@@ -51,25 +48,22 @@ async function game() {
     }
 }
 
-// Powrót do menu, jeśli kliknięto poza `#game_content`
 function returnToMainMenu(event) 
 {
     const gameContent = document.getElementById("game_content");
 
-    // Jeśli kliknięto w `#game_content` lub jego dzieci, nie rób nic
     if (gameContent.contains(event.target)) 
     {
         return;
     }
 
-    is_game_running = false; // Zatrzymanie gry
+    is_game_running = false;
 
-    document.getElementById("game_content").style.display = "none"; // Ukrycie gry
-    document.getElementById("m2").style.display = "block"; // Pokazanie menu głównego
+    document.getElementById("game_content").style.display = "none";
+    document.getElementById("m2").style.display = "block";
     document.getElementById("baner_menu").style.display = "flex";
     document.getElementById("baner_game").style.display = "none";
 
-    // Usunięcie event listenera po powrocie do menu
     document.getElementById("container").removeEventListener("click", returnToMainMenu, true);
 }
 
@@ -83,9 +77,8 @@ function updatetime() {
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
     const minutes = now.getMinutes().toString().padStart(2, '0');
-    const seconds = (60 - now.getSeconds()).toString().padStart(2, '0'); // Odliczanie od 60 w dół
+    const seconds = (60 - now.getSeconds()).toString().padStart(2, '0');
 
-    // Sprawdzenie szerokości ekranu (jeśli telefon, pokazuj tylko sekundy)
     if (window.innerWidth <= 600) {
         document.getElementById("time").innerHTML = `
             <span class="time-part">${seconds}</span>
@@ -101,10 +94,9 @@ function updatetime() {
     }
 }
 
-// Aktualizacja co sekundę + sprawdzanie szerokości ekranu
 setInterval(updatetime, 1000);
-window.addEventListener('resize', updatetime); // Odświeżanie przy zmianie rozmiaru
-updatetime(); // Pierwsze wywołanie
+window.addEventListener('resize', updatetime);
+updatetime();
 
 
 //moving background
@@ -158,7 +150,6 @@ function settings()
     settingsWindow.style.display = "block";
     settingsWindow.style.opacity = "1";
     
-    // Dodanie event listenera na kliknięcie
     document.addEventListener("click", function closeSettings(e) {
         if (!settingsWindow.contains(e.target) && e.target.tagName !== 'BUTTON') {
             settingsWindow.style.display = "none";

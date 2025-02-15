@@ -1,13 +1,12 @@
 //colours game
 async function colours() {
-    // Sprawdzanie co sekundę, czy gra powinna się zatrzymać
     let gameChecker = setInterval(() => {
         if (!is_game_running) {
-            console.log("Gra zatrzymana!"); // Debug
-            clearInterval(gameChecker); // Zatrzymanie interwału
-            document.getElementById("colours").style.display = "none"; // Ukrycie gry
+            console.log("Gra zatrzymana!");
+            clearInterval(gameChecker);
+            document.getElementById("colours").style.display = "none";
         }
-    }, 1000); // Sprawdzanie co 1 sekundę
+    }, 1000);
 
     // Variables
     var number_of_blocks = Array.from(document.getElementsByClassName("colour")).length - 3; 
@@ -34,13 +33,13 @@ async function colours() {
     }
 
     for (let r = 0; r < level_value * 4; r++) {
-        if (!is_game_running) return; // ✅ Przerwanie gry natychmiast!
+        if (!is_game_running) return;
 
         var required_count = new Array(4).fill(0);
         var indexes_used = [];
 
         for (let i = 0; i < number_of_blocks; i++) {
-            if (!is_game_running) return; // ✅ Przerwanie w trakcie animacji!
+            if (!is_game_running) return;
 
             let randomIndex = Math.floor(Math.random() * blocks.length);
             while (indexes_used.includes(randomIndex)) {
@@ -52,7 +51,7 @@ async function colours() {
             required_count[randomIndex] = randomBlinks;
 
             for (let j = 0; j < randomBlinks; j++) {
-                if (!is_game_running) return; // ✅ Przerwanie przed mignięciem!
+                if (!is_game_running) return;
 
                 sounds[randomIndex].play();
                 await delay(250);
@@ -74,7 +73,7 @@ async function colours() {
             if (!document.querySelector('#colours h2')) notification = document.createElement("h2");
 
             const handleClick = async (event) => {
-                if (!is_game_running) return; // ✅ Blokowanie kliknięć po wyjściu z gry!
+                if (!is_game_running) return;
 
                 const clickedBlock = event.target;
                 const blockIndex = blocks.indexOf(clickedBlock);
