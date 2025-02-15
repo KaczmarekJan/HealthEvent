@@ -67,14 +67,9 @@
         height: 200px;
     }
 }
-@media only screen and (min-width:484px) and (max-width:739px) {
+@media only screen and (min-width:484px) and (max-width:1587px) {
     .colour {
     width: 200px;
-        }
-}
-@media only screen and (min-width:740px) and (max-width: 1587px) {
-    .colour {
-    width: 250px;
         }
 }
 @media only screen and  (min-width: 1588px){
@@ -222,12 +217,11 @@ p{
     height: 100%;
     width: 90dvw;
     position: relative;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#game_content,
 #colours
 {
     width: 90dvw;
@@ -236,11 +230,11 @@ p{
     align-items: flex-start;
     flex-wrap: wrap;
     overflow: auto;
+    z-index: 2;
 }
 #game_content > h2 {
     position: absolute;
-    z-index: 2;
-    top: -30%;
+    z-index: 3;
 }
 .colour
 {
@@ -311,9 +305,13 @@ p{
     background-size: cover;
 }
 #memory > h2 {
+    width: 100%;
+    text-align: center;
+}
+#game_content > h2 {
     position: absolute;
-    z-index: 2;
-    top: -30%;
+    z-index: 9999;
+    filter: drop-shadow(0px 0px 4px rgb(0, 0, 0));
 }
 
 #settings_window {
@@ -413,7 +411,7 @@ p{
 .fieldH {
     height: 18%;
     width: 18%;
-    border: 2px solid rgb(248, 88, 200);
+    border: 2px solid #a637e7;
     border-radius: 15px;
     transition: 0.5s background-color ease;
     cursor: pointer;
