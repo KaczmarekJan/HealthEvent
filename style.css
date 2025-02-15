@@ -398,7 +398,7 @@ p{
 .fieldE {
     height: 30%;
     width: 30%;
-    border: 2px solid rgb(248, 88, 200);
+    border: 2px solid #a637e7;
     border-radius: 15px;
     transition: 0.5s background-color ease;
     cursor: pointer;
@@ -407,7 +407,7 @@ p{
 .fieldM {
     height: 22%;
     width: 22%;
-    border: 2px solid rgb(248, 88, 200);
+    border: 2px solid #a637e7;
     border-radius: 15px;
     transition: 0.5s background-color ease;
     cursor: pointer;
@@ -416,7 +416,7 @@ p{
 .fieldH {
     height: 18%;
     width: 18%;
-    border: 2px solid rgb(248, 88, 200);
+    border: 2px solid #a637e7;
     border-radius: 15px;
     transition: 0.5s background-color ease;
     cursor: pointer;
