@@ -67,9 +67,14 @@
         height: 200px;
     }
 }
-@media only screen and (min-width:484px) and (max-width:1587px) {
+@media only screen and (min-width:484px) and (max-width:739px) {
     .colour {
     width: 200px;
+        }
+}
+@media only screen and (min-width:740px) and (max-width: 1587px) {
+    .colour {
+    width: 250px;
         }
 }
 @media only screen and  (min-width: 1588px){
@@ -250,11 +255,12 @@ p{
     height: 100%;
     width: 90dvw;
     position: relative;
-    display: none;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
+#game_content,
 #colours
 {
     width: 90dvw;
@@ -263,11 +269,11 @@ p{
     align-items: flex-start;
     flex-wrap: wrap;
     overflow: auto;
-    z-index: 2;
 }
 #game_content > h2 {
     position: absolute;
-    z-index: 3;
+    z-index: 2;
+    top: -30%;
 }
 .colour
 {
@@ -331,27 +337,23 @@ p{
     flex-wrap: wrap;
     overflow: auto;
 }
-#memory > h2 {
-    width: 100%;
-    text-align: center;
-}
 .memory-tile{
     margin: 2%;
     background-image: url(memory/memory-card.jpg);
     background-position: center;
     background-size: cover;
 }
-#game_content > h2 {
+#memory > h2 {
     position: absolute;
-    z-index: 9999;
-    filter: drop-shadow(0px 0px 4px rgb(0, 0, 0));
+    z-index: 2;
+    top: -30%;
 }
 
 #settings_window {
     position: absolute;
     display: none;
-    width: 50dvw;
-    height: 50dvh;
+    width: 60dvw;
+    height: 60dvh;
     border-radius: 20px;
     background-color: rgb(0,0,0);
     z-index: 9999;
