@@ -67,10 +67,10 @@ async function memory(){
                     point_timer_handle.style.color = "white";
                     point_timer_handle.innerText = mem_nopoints;
                 }else{
-                    if(points_countdown<=10){
+                    if(points_countdown<=20){
                         countdown_beep.play();
                         point_timer_handle.style.transition = "color 0.5s";
-                        if(points_countdown%2==0){
+                        if(points_countdown%4==0){
                             point_timer_handle.style.color = "red";
                         }else{
                             point_timer_handle.style.color = "white";
