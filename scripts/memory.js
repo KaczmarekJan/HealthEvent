@@ -136,9 +136,6 @@ async function memory(){
             break;
 
         case 4:
-            await game(8,1);
-            await game(16,2);
-            await game(24,3);
             await game(32,4);
             break;
 
