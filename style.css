@@ -1,3 +1,7 @@
+@font-face {
+    font-family: "Alata";
+    src: url(Alata-Regular.ttf);
+}
 @keyframes text_scale 
 {
     0%, 100% {transform: scale(1); letter-spacing: 0px;}
@@ -5,7 +9,7 @@
 }
 * 
 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Alata;
     font-size: 16pt;
 }
 @media only screen and (max-width: 360px) {
@@ -21,24 +25,31 @@
 
     }
 }
-@media only screen and (min-width: 661px) {
-    .memory-tile{
+@media only screen and (max-width: 483px) {
+    .colour {
         width: 150px;
-        height: 150px;
     }
 }
-@media only screen and (max-width:739px) {
+@media only screen and (min-width: 661px) {
+    .memory-tile{
+        width: 200px;
+        height: 200px;
+    }
+}
+@media only screen and (min-width:484px) and (max-width:739px) {
     .colour {
     width: 200px;
         }
 }
-@media only screen and (min-width:740px) {
+@media only screen and (min-width:740px) and (max-width: 1587px) {
     .colour {
-    width: 300px;
+    width: 250px;
         }
 }
-@media only screen and (max-width: 1588px){
-    
+@media only screen and  (min-width: 1588px){
+    .colour {
+        width: 300px;
+    }
 }
 body
 {
@@ -47,7 +58,7 @@ body
 }
 #background 
 {
-    background: url(background.png) no-repeat center center;
+    background: url(images/background.png) no-repeat center center;
     background-size: cover;
     transform: translate(-50%, -50%);
     width: 110%;
@@ -85,7 +96,16 @@ body
 #baner_buttons_container {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     gap: 20%;
+}
+#title {
+    width: 100px;
+    text-align: center;
+}
+.arrow {
+    width: 40px;
+    height: 40px;
 }
 .slider_button 
 {
@@ -165,6 +185,7 @@ body
 #game_content
 {
     height: 100%;
+    width: 90dvw;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -229,9 +250,10 @@ body
 }
 
 #memory{
+    width: 90dvw;
     height: 80dvh;
     display: none;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     overflow: auto;
