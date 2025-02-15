@@ -5,7 +5,6 @@ level(2); //default level
 var m_current = 2; //site page number
 site_language(5); //default language
 
-
 function level(x)
 {
     // Reset all buttons to gray color
@@ -20,38 +19,46 @@ function level(x)
     level_value = x;
 }
 
-//random game
-async function game()
-{
-    if(document.getElementById("m2").style.display !== "none")
-    {
+// Funkcja startująca grę
+async function game() {
+    if (document.getElementById("m2").style.display !== "none") {
+        isGameRunning = true; // Gra startuje
+
         document.getElementById("baner").style.visibility = "hidden";
         document.getElementById("m2").style.display = "none";
         document.getElementById("game_content").style.display = "flex";
 
-        //switch(Math.floor(Math.random()*4))
-        switch(3)
-        {
-            case 0:
-                    await colours();
-                    break;
-            case 1:
-                    await numbers();
-                    break;
-            case 2:
-                    await memory();
-                    break;
-            case 3: 
-                    await sequence();
-                    break;
-            default:
-                    alert("wrong case number");
-                    break;
+        // Nasłuchiwanie kliknięć na `#container`, aby wykryć kliknięcie poza `#game_content`
+        document.getElementById("container").addEventListener("click", returnToMainMenu);
+
+        // Uruchomienie losowej gry
+        switch (Math.floor(Math.random() * 4)) {
+            case 0: await colours(); break;
+            case 1: await numbers(); break;
+            case 2: await memory(); break;
+            case 3: await sequence(); break;
+            default: alert("wrong case number"); break;
         }
 
-        document.getElementById("baner").style.visibility = "visible";
-        document.getElementById("m2").style.display = "block";
-        document.getElementById("game_content").style.display = "none";
+        // Jeśli gra została przerwana, zatrzymaj jej działanie
+        if (!isGameRunning) return;
+    }
+}
+
+// Funkcja powrotu do menu
+function returnToMainMenu(event) {
+    const gameContent = document.getElementById("game_content");
+
+    // Sprawdzamy, czy kliknięcie było poza obszarem gry
+    if (!gameContent.contains(event.target)) {
+        isGameRunning = false; // Zatrzymanie gry
+
+        document.getElementById("game_content").style.display = "none"; // Ukrycie gry
+        document.getElementById("m2").style.display = "block"; // Pokazanie menu głównego
+        document.getElementById("baner").style.visibility = "visible"; // Pokazanie banera
+
+        // Usunięcie event listenera, żeby nie dublować go przy kolejnych uruchomieniach
+        document.getElementById("container").removeEventListener("click", returnToMainMenu);
     }
 }
 
