@@ -74,8 +74,6 @@ function updatetime()
 setInterval(updatetime, 1000); // Aktualizacja co sekundę
 updatetime(); // Pierwsze wywołanie od razu, bez czekania 1 sekundy
 
-
-
 //moving background
 document.addEventListener("mousemove", (e) => 
     {
