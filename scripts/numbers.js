@@ -120,6 +120,7 @@ async function numbers()
             amount_of_numbers++;
         }
     }
+    
     content.innerHTML = `${nmb_score} ${points}`;
     await delay(2000);
     document.getElementById("numbers").style.display = "none";
