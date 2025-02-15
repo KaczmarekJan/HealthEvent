@@ -1,6 +1,8 @@
 var level_value;
 var is_game_running;
 var points = 0; //number of points
+var instchange_numbers = "Sum all the numbers";
+var numberbutremeber = "Remember all the numbers";
 level(1); //default level
 site_language(5); //default language
 
@@ -162,6 +164,25 @@ function site_language(x)
             //change start button game
             document.getElementById("m2").innerHTML = "<p>Click anywhere to start</p>";
 
+            //info
+            document.getElementById("info").innerHTML = `
+                    <p>Memory Trainer</p>
+                    <p>Version 1.0</p>
+                    <p>Developed by Dobrica Nedeljković</p>
+                    <p>11.02.2025</p>`;
+
+            //buttons
+            document.getElementById("level1").innerHTML = "Easy";
+            document.getElementById("level2").innerHTML = "Normal";
+            document.getElementById("level3").innerHTML = "Hard";
+            document.getElementById("level4").innerHTML = "Unlimited";
+            
+            //language
+            document.getElementById("Language").innerHTML = "Language: "
+
+            //settings window volume nejm
+            document.getElementById("Volume").innerHTML = "Volume: "; 
+
             //change title
             text1 = "<strong>Article</strong>";
             text2 = "<strong>Game</strong>";
@@ -213,25 +234,40 @@ function site_language(x)
             {
                 document.getElementsByClassName("button-89")[i].style.setProperty('--color', 'gray');
             }
-            
+            instchange_numbers = "Saberite sve brojeve: ";
             // Set clicked button to purple
             document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
 
             //change start button game
-            document.getElementById("m2").innerHTML = "<p>Кликните било где да почнете</p>";
+            document.getElementById("m2").innerHTML = "<p>Kliknite bilo gde da počnete.</p>";
+            // INFORMATION
+            document.getElementById("info").innerHTML = `
+                    <p>Trener Pamćenja</p>
+                    <p>Verzija 1.0</p>
+                    <p>Kreator: Dobrica Nedeljković</p>
+                    <p>11.02.2025</p>`;
 
+            document.getElementById("Language").innerHTML = "Jezik: "
+            
+            //settings window volume nejm
+            document.getElementById("Volume").innerHTML = "Glasnoća: "; 
             //change title
-            text1 = "<strong>Чланак</strong>";
-            text2 = "<strong>Игра</strong>";
-            text3 = "<strong>Рангирање</strong>";
+            text1 = "<strong>Artikl</strong>";
+            text2 = "<strong>Igra</strong>";
+            text3 = "<strong>Rangiranje</strong>";
             for(let i=1; i<4; i++)
             {
                 if(document.getElementById("m"+i).style.display == "block")
                     document.getElementById("m"+i).innerHTML = `$(text+i)`;
             }
+            //buttons
+            document.getElementById("level1").innerHTML = "Lako";
+            document.getElementById("level2").innerHTML = "Srednje";
+            document.getElementById("level3").innerHTML = "Teško";
+            document.getElementById("level4").innerHTML = "Neograničeno";
 
             //change main page title
-            document.getElementsByTagName("title")[0].innerHTML = "Мемори Траинер";
+            document.getElementsByTagName("title")[0].innerHTML = "Trener Memorije";
 
             //change article language
             document.getElementById("m1").innerHTML = `
