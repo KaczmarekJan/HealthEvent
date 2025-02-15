@@ -27,6 +27,19 @@
         height: 150px;
     }
 }
+@media only screen and (max-width:739px) {
+    .colour {
+    width: 200px;
+        }
+}
+@media only screen and (min-width:740px) {
+    .colour {
+    width: 300px;
+        }
+}
+@media only screen and (max-width: 1588px){
+    
+}
 body
 {
     margin: 0;
@@ -163,7 +176,7 @@ body
 {
     width: 90dvw;
     display: none;
-    justify-content: space-around;
+    justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
     overflow: auto;
@@ -175,8 +188,7 @@ body
 }
 .colour
 {
-    width: 150px;
-    height: 150px;
+    aspect-ratio: 1/1;
     margin: 2%;
     transition: 0.2s ease-in-out;
 }
