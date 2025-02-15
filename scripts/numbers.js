@@ -12,11 +12,11 @@ async function numbers()
     for(let i = 0; i < 100; i++) {numbers.push(i);}
     let amount_of_numbers = 3;
     let numbers_range = 90;
-    for(let r=0; r<level_value*3; r++)
+    if(level_value == 3 )
     {
-        if(level_value == 3 )
+        content.innerHTML = instchange_numbers;
+        for(let r=0; r<level_value*3; r++)
         {
-            content.innerHTML = instchange_numbers;
             await delay(1000);
             let equals = 0;
             for(let i=0; i<amount_of_numbers; i++)
@@ -55,10 +55,19 @@ async function numbers()
                     }
                 userAnswer.addEventListener("keydown", checkAnswer);
             });
+            if(numbers_range > 9)
+                numbers_range -= 5;
+            else
+                numbers_range = 0;
+
+            amount_of_numbers++;
         }
-        else
+    }
+    else
+    {
+        content.innerHTML = numberbutremeber;
+        for(let r=0; r<level_value*3; r++)
         {
-            content.innerHTML = numberbutremeber;
             await delay(1000);
             var equals = new Array(amount_of_numbers).fill(0);
             for(let i=0; i<amount_of_numbers; i++)
@@ -103,15 +112,15 @@ async function numbers()
                     content.innerHTML = nmb_incorrect;
                     await delay(1000);
                 }
-        }
-        if(numbers_range > 9)
-            numbers_range -= 5;
-        else
-            numbers_range = 0;
+            if(numbers_range > 9)
+                numbers_range -= 5;
+            else
+                numbers_range = 0;
 
-        amount_of_numbers++;
+            amount_of_numbers++;
+        }
     }
-    content.innerHTML = `${nmb_score}: ${points}`;
+    content.innerHTML = `${nmb_score} ${points}`;
     await delay(2000);
     document.getElementById("numbers").style.display = "none";
 }

@@ -71,7 +71,7 @@ async function sequence() {
         createBoard(prefixLetter, fieldNum);
 
         function sound(x) {
-            audio = new Audio(`sound${x % 4}.wav`)
+            audio = new Audio(`sounds/sound${x % 4}.wav`)
             audio.play()
         }
 
