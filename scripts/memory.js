@@ -4,6 +4,19 @@ var mem_pointsleft = "points left!";
 
 
 async function memory(){
+    //preloading audio
+    var countdown_beep = new Audio(`sounds/countdown-beep.wav`);
+    countdown_beep.preload = "auto"; // Wczytanie dźwięku wcześniej, aby uniknąć opóźnień
+    countdown_beep.volume = document.getElementById("volumeSlider").value / 5;
+    
+    var flipcard = new Audio(`sounds/flipcard.wav`);
+    flipcard.preload = "auto"; // Wczytanie dźwięku wcześniej, aby uniknąć opóźnień
+    flipcard.volume = document.getElementById("volumeSlider").value;
+
+    var card_ok = new Audio(`sounds/memory-ok.wav`);
+    card_ok.preload = "auto"; // Wczytanie dźwięku wcześniej, aby uniknąć opóźnień
+    card_ok.volume = document.getElementById("volumeSlider").value;
+
     document.getElementById("memory").style.display = "flex";
     var number_of_images = 40; //number of images in folder
      
@@ -55,6 +68,7 @@ async function memory(){
                     point_timer_handle.innerText = mem_nopoints;
                 }else{
                     if(points_countdown<=50){
+                        countdown_beep.play();
                         point_timer_handle.style.transition = "color 0.5s";
                         if(points_countdown%10==0){
                             point_timer_handle.style.color = "red";
@@ -66,11 +80,10 @@ async function memory(){
             }, 1000);
             var lastTile = null;
             const handleClick = async (event) => {
-                
                 tiles.forEach((element) => { //block event listener during animation
                     element.removeEventListener("click", handleClick);
                 });
-
+                flipcard.play();
                 const clickedTile = event.target;
                 const tileIndex = tiles.indexOf(clickedTile);
                 console.log("Clicked tile: " + tileIndex + "=>"+images[tileIndex]);
@@ -84,6 +97,7 @@ async function memory(){
                             clickedTile.style.visibility = "hidden";
                             tiles[lastTile].style.visibility = "hidden";
                             remainigTiles--;
+                            card_ok.play();
                     }else{ //pair not found
                             clickedTile.style.backgroundImage = "";
                             tiles[lastTile].style.backgroundImage = "";
