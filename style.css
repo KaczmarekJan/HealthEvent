@@ -48,6 +48,10 @@
         width: 100px;
         height: 100px;
     }
+    #sequenceGame {
+        width: 80vw;
+        height: 80vw;
+    }
 }
 @media only screen and (min-width: 361px) and (max-width: 660px) {
     .memory-tile{
@@ -55,10 +59,18 @@
         height: 130px;
 
     }
+    #sequenceGame {
+        width: 70vw;
+        height: 70vw;
+    }
 }
 @media only screen and (max-width: 483px) {
     .colour {
         width: 150px;
+    }
+    #sequenceGame {
+        width: 60vw;
+        height: 60vw;
     }
 }
 @media only screen and (min-width: 661px) {
@@ -66,15 +78,27 @@
         width: 200px;
         height: 200px;
     }
+    #sequenceGame {
+        width: 50vw;
+        height: 50vw;
+    }
 }
 @media only screen and (min-width:484px) and (max-width:1587px) {
     .colour {
     width: 200px;
         }
+        #sequenceGame {
+            width: 30vw;
+            height: 30vw;
+        }
 }
 @media only screen and  (min-width: 1588px){
     .colour {
         width: 300px;
+    }
+    #sequenceGame {
+        width: 25vw;
+        height: 25vw;
     }
 }
 body
@@ -386,8 +410,6 @@ p{
 
 
 #sequenceGame {
-    width: 25vw;
-    height: 25vw;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
