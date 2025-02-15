@@ -115,8 +115,38 @@ p{
     height: 100dvh;
 }
 #time {
-    animation: rainbow 5s ease infinite; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px; /* Powiększone odstępy między godzinami, minutami i sekundami */
+    font-size: 24px;
 }
+
+.time-group {
+    display: flex;
+    gap: 5px; /* Odstępy między cyframi */
+}
+
+.digit-box {
+    width: 30px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    
+    /* Gradientowy kolor tekstu */
+    background-image: linear-gradient(180deg, #D580FF, #FFFFFF);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-shadow: 0px 0px 10px rgba(213, 128, 255, 0.5);
+}
+
 #baner 
 {
     display: flex;

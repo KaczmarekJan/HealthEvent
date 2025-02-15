@@ -65,13 +65,23 @@ function updatetime() {
     const minutes = now.getMinutes().toString().padStart(2, '0');
     const seconds = (60 - now.getSeconds()).toString().padStart(2, '0'); // Odliczanie od 60 w dół
 
-    document.getElementById("time").innerText = `${hours}:${minutes}:${seconds}`;
-}
-setInterval(updatetime, 1000); // Aktualizacja co sekundę
-updatetime(); // Pierwsze wywołanie od razu, bez czekania 1 sekundy
+    // Funkcja do zamiany każdej cyfry na div z klasą "digit-box"
+    function wrapDigits(str) {
+        return str.split('').map(digit => `<div class="digit-box">${digit}</div>`).join('');
+    }
 
-setInterval(updatetime, 1000); // Update every 1 second
-updatetime(); // Initial call to prevent delay
+    // Tworzenie zegara bez dwukropka, ale z przerwami między elementami
+    document.getElementById("time").innerHTML = `
+        <div class="time-group">${wrapDigits(hours)}</div>:
+        <div class="time-group">${wrapDigits(minutes)}</div>:
+        <div class="time-group">${wrapDigits(seconds)}</div>
+    `;
+}
+
+setInterval(updatetime, 1000);
+updatetime();
+
+
 
 //moving background
 document.addEventListener("mousemove", (e) => 
