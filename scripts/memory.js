@@ -6,15 +6,15 @@ var mem_pointsleft = "points left!";
 async function memory(){
     //preloading audio
     var countdown_beep = new Audio(`sounds/countdown-beep.wav`);
-    countdown_beep.preload = "auto"; // Wczytanie dźwięku wcześniej, aby uniknąć opóźnień
+    countdown_beep.preload = "auto"; // sound preloading to avoid delays
     countdown_beep.volume = document.getElementById("volumeSlider").value / 5;
     
     var flipcard = new Audio(`sounds/flipcard.wav`);
-    flipcard.preload = "auto"; // Wczytanie dźwięku wcześniej, aby uniknąć opóźnień
+    flipcard.preload = "auto"; // sound preloading to avoid delays
     flipcard.volume = document.getElementById("volumeSlider").value;
 
     var card_ok = new Audio(`sounds/memory-ok.wav`);
-    card_ok.preload = "auto"; // Wczytanie dźwięku wcześniej, aby uniknąć opóźnień
+    card_ok.preload = "auto"; // sound preloading to avoid delays
     card_ok.volume = document.getElementById("volumeSlider").value;
 
     document.getElementById("memory").style.display = "flex";
