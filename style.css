@@ -67,14 +67,9 @@
         height: 200px;
     }
 }
-@media only screen and (min-width:484px) and (max-width:739px) {
+@media only screen and (min-width:484px) and (max-width:1587px) {
     .colour {
     width: 200px;
-        }
-}
-@media only screen and (min-width:740px) and (max-width: 1587px) {
-    .colour {
-    width: 250px;
         }
 }
 @media only screen and  (min-width: 1588px){
@@ -225,12 +220,11 @@ p{
     height: 100%;
     width: 90dvw;
     position: relative;
-    display: flex;
-    flex-direction: column;
+    display: none;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
-#game_content,
 #colours
 {
     width: 90dvw;
@@ -239,11 +233,11 @@ p{
     align-items: flex-start;
     flex-wrap: wrap;
     overflow: auto;
+    z-index: 2;
 }
 #game_content > h2 {
     position: absolute;
-    z-index: 2;
-    top: -30%;
+    z-index: 3;
 }
 .colour
 {
@@ -313,10 +307,10 @@ p{
     background-position: center;
     background-size: cover;
 }
-#memory > h2 {
+#game_content > h2 {
     position: absolute;
-    z-index: 2;
-    top: -30%;
+    z-index: 9999;
+    filter: drop-shadow(0px 0px 4px rgb(0, 0, 0));
 }
 
 #settings_window {
