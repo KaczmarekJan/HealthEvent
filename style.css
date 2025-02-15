@@ -133,7 +133,8 @@ p{
     width: 100dvw;
     height: 100dvh;
 }
-#baner 
+#baner_menu,
+#baner_game
 {
     display: flex;
     align-items: center;
@@ -141,7 +142,12 @@ p{
     height: 10dvh;
     width: 100dvw;
 }
-#baner>section
+#baner_game
+{
+    display: none;
+    color: gray;
+}
+#baner_menu>section
 {
     display: flex;
     width: 20%;

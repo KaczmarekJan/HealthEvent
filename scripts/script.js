@@ -21,18 +21,22 @@ function level(x)
 
 // Funkcja startująca grę
 async function game() {
-    if (document.getElementById("m2").style.display !== "none") {
-        isGameRunning = true; // Gra startuje
+    if (document.getElementById("m2").style.display !== "none") 
+    {
+        is_game_running = true; // Gra startuje
 
-        document.getElementById("baner").style.visibility = "hidden";
+        document.getElementById("baner_menu").style.display = "none";
+        document.getElementById("baner_game").style.display = "flex";
         document.getElementById("m2").style.display = "none";
         document.getElementById("game_content").style.display = "flex";
 
-        // Nasłuchiwanie kliknięć na `#container`, aby wykryć kliknięcie poza `#game_content`
-        document.getElementById("container").addEventListener("click", returnToMainMenu);
+        // Dodanie event listenera na kliknięcia na `#container`, ale ignorowanie `#game_content`
+        document.getElementById("container").addEventListener("click", returnToMainMenu, true);
 
         // Uruchomienie losowej gry
-        switch (Math.floor(Math.random() * 4)) {
+        //switch (Math.floor(Math.random() * 2))
+        switch(1)
+        {
             case 0: await colours(); break;
             case 1: await numbers(); break;
             case 2: await memory(); break;
@@ -40,26 +44,33 @@ async function game() {
             default: alert("wrong case number"); break;
         }
 
-        // Jeśli gra została przerwana, zatrzymaj jej działanie
-        if (!isGameRunning) return;
+        document.getElementById("baner_menu").style.display = "flex";
+        document.getElementById("baner_game").style.display = "none";
+        document.getElementById("m2").style.display = "block";
+        document.getElementById("game_content").style.display = "none";
     }
 }
 
-// Funkcja powrotu do menu
-function returnToMainMenu(event) {
+// Powrót do menu, jeśli kliknięto poza `#game_content`
+function returnToMainMenu(event) 
+{
     const gameContent = document.getElementById("game_content");
 
-    // Sprawdzamy, czy kliknięcie było poza obszarem gry
-    if (!gameContent.contains(event.target)) {
-        isGameRunning = false; // Zatrzymanie gry
-
-        document.getElementById("game_content").style.display = "none"; // Ukrycie gry
-        document.getElementById("m2").style.display = "block"; // Pokazanie menu głównego
-        document.getElementById("baner").style.visibility = "visible"; // Pokazanie banera
-
-        // Usunięcie event listenera, żeby nie dublować go przy kolejnych uruchomieniach
-        document.getElementById("container").removeEventListener("click", returnToMainMenu);
+    // Jeśli kliknięto w `#game_content` lub jego dzieci, nie rób nic
+    if (gameContent.contains(event.target)) 
+    {
+        return;
     }
+
+    is_game_running = false; // Zatrzymanie gry
+
+    document.getElementById("game_content").style.display = "none"; // Ukrycie gry
+    document.getElementById("m2").style.display = "block"; // Pokazanie menu głównego
+    document.getElementById("baner_menu").style.display = "flex";
+    document.getElementById("baner_game").style.display = "none";
+
+    // Usunięcie event listenera po powrocie do menu
+    document.getElementById("container").removeEventListener("click", returnToMainMenu, true);
 }
 
 //waiting function

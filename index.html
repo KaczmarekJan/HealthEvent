@@ -15,22 +15,27 @@
 <body>
     <section id="background"></section>
     <section id="container">
-        <header id="baner">
-            <section id="time"></section>
-            <section id="baner_buttons_container">
+        <header>
+            <div id="baner_menu">
+                <section id="time"></section>
+                <section id="baner_buttons_container">
+                    <section>
+                        <button class="slider_button" onclick="previous()"><img src="images/left.png" alt="previous" class="arrow"></button>
+                    </section>
+                    <section id="title">
+                        <strong>Game</strong>
+                    </section>
+                    <section>
+                        <button class="slider_button" onclick="next()"><img src="images/right.png" alt="next" class="arrow"></button>
+                    </section>
+                </section>
                 <section>
-                    <button class="slider_button" onclick="previous()"><img src="images/left.png" alt="previous" class="arrow"></button>
+                    <button onclick="settings()" class="slider_button">⚙️</button>
                 </section>
-                <section id="title">
-                    <strong>Game</strong>
-                </section>
-                <section>
-                    <button class="slider_button" onclick="next()"><img src="images/right.png" alt="next" class="arrow"></button>
-                </section>
-            </section>
-            <section>
-                <button onclick="settings()" class="slider_button">⚙️</button>
-            </section>
+            </div>
+            <div id="baner_game">
+                <strong>Click anywhere outside the box to return to the main menu</strong>
+            </div>
         </header>
         <main id="slider" onclick="game()">
             <article id="m1" style="align-items: flex-start;">
