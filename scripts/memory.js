@@ -51,7 +51,7 @@ async function memory(){
                 if(points_countdown<0){ points_countdown = 0;
                     point_timer_handle.innerText = mem_nopoints;
                 }else{
-                    point_timer_handle.innerText = mem_hurryup + points_countdown + mem_pointsleft;}
+                    point_timer_handle.innerText = mem_hurryup + points_countdown + " " + mem_pointsleft;}
             }, 1000);
             var lastTile = null;
             const handleClick = async (event) => {
