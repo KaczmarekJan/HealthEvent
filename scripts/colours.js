@@ -91,7 +91,7 @@ async function colours()
                             blocks.forEach(block => block.removeEventListener("click", handleClick));
                             points++;
                             //notification
-                            notification.innerHTML = "Correct!";
+                            notification.innerHTML = nmb_correct;
                             document.getElementById("game_content").insertBefore(notification, document.getElementById("game_content").firstChild);
                             await delay(500);
                             notification.remove();
@@ -106,7 +106,7 @@ async function colours()
                             //deleting listeners and resolving promise
                             blocks.forEach(block => block.removeEventListener("click", handleClick));
                             //notification
-                            notification.innerHTML = "Wrong!";
+                            notification.innerHTML = nmb_incorrect;
                             document.getElementById("game_content").insertBefore(notification, document.getElementById("game_content").firstChild);
                             await delay(500);
                             notification.remove();
@@ -127,7 +127,7 @@ async function colours()
     }
     blocks.forEach(block => block.style.display = "none");
     const score = document.createElement("h2");
-    score.textContent = `Score: ${points}`;
+    score.textContent = `${nmb_score}: ${points}`;
     document.getElementById("colours").appendChild(score);
     await delay(2000);
     score.remove();

@@ -1,8 +1,6 @@
 var level_value;
 var is_game_running;
 var points = 0; //number of points
-var instchange_numbers = "Sum all the numbers";
-var numberbutremeber = "Remember all the numbers";
 level(1); //default level
 site_language(5); //default language
 
@@ -29,7 +27,7 @@ async function game()
         document.getElementById("m2").style.display = "none";
         document.getElementById("game_content").style.display = "flex";
 
-        /*switch(Math.floor(Math.random()*3))*/switch(0)
+        switch(Math.floor(Math.random()*4))
         {
             case 0:
                     await colours();
@@ -164,6 +162,13 @@ function site_language(x)
             //numbers variables
             instchange_numbers = "Sum all the numbers";
             numberbutremeber = "Remember all the numbers";
+            nmb_correct = "Correct!";
+            nmb_incorrect = "Incorrect!";
+            nmb_score = "Score: ";
+            nmb_placeholder = "Input the numbers that were displayed one by one.";
+            mem_nopoints = "No more points :(";
+            mem_hurryup = "Hurry up! Only ";
+            mem_pointsleft = "points left!";
 
             //change main page title
             document.getElementsByTagName("title")[0].innerHTML = "Memory Training";
@@ -245,7 +250,16 @@ function site_language(x)
             document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
 
             //numbers variables
+            
             instchange_numbers = "Saberite sve brojeve: ";
+            numberbutremeber = "Zapamtite sledeće brojeve: ";
+            nmb_correct = "Tačno!";
+            nmb_incorrect = "Netačno!";
+            nmb_score = "Rezultat: ";
+            nmb_placeholder = "Redno ukucajte brojeve koji su bili prikazani.";
+            mem_nopoints = "Ostali ste bez poena :(";
+            mem_hurryup = "Požuri! Ostalo ti je samo ";
+            mem_pointsleft = "poena!";
 
             //change start button game
             document.getElementById("m2").innerHTML = "<p>Kliknite bilo gde da počnete.</p>";

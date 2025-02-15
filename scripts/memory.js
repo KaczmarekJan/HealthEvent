@@ -1,3 +1,8 @@
+var mem_nopoints = "No more points :(";
+var mem_hurryup = "Hurry up! Only ";
+var mem_pointsleft = "points left!";
+
+
 async function memory(){
     document.getElementById("memory").style.display = "flex";
     var number_of_images = 40; //number of images in folder
@@ -44,9 +49,9 @@ async function memory(){
                 //console.log(points_countdown);
                 points_countdown-=5;
                 if(points_countdown<0){ points_countdown = 0;
-                    point_timer_handle.innerText = "No more points left :(";
+                    point_timer_handle.innerText = mem_nopoints;
                 }else{
-                    point_timer_handle.innerText = "Hurry up! Only " + points_countdown + " points left!";}
+                    point_timer_handle.innerText = mem_hurryup + points_countdown + mem_pointsleft;}
             }, 1000);
             var lastTile = null;
             const handleClick = async (event) => {

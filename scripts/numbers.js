@@ -1,3 +1,9 @@
+var instchange_numbers = "Sum all the numbers";
+var numberbutremeber = "Remember all the numbers";
+var nmb_correct = "Correct!";
+var nmb_incorrect = "Incorrect!";
+var nmb_score = "Score: ";
+var nmb_placeholder = "Input the numbers that were displayed one by one.";
 async function numbers()
 {
     document.getElementById("numbers").style.display = "flex";
@@ -29,14 +35,14 @@ async function numbers()
                         {
                             if(userAnswer.value == equals)
                                 {
-                                    content.innerHTML = "Correct!";
+                                    content.innerHTML = nmb_correct;
                                     await delay(1000);
                                     points++;
                                     resolve();
                                 }
                             else
                                 {
-                                    content.innerHTML = "Incorrect!";
+                                    content.innerHTML = nmb_incorrect;
                                     await delay(1000);
                                     resolve();
                                 }
@@ -57,7 +63,7 @@ async function numbers()
                 content.innerHTML = numbers.splice(RandomIndex, 1)[0];
                 await delay(1000);
             }
-            content.innerHTML = `<input type="number" id="userAnswer" placeholder="Enter numbers 1 to ${amount_of_numbers}">`;
+            content.innerHTML = `<input type="number" id="userAnswer" placeholder="${nmb_placeholder}.">`;
             var answer = new Array(amount_of_numbers).fill(0);
             await new Promise(resolve => {
                 const userAnswer = document.getElementById("userAnswer");
@@ -80,13 +86,13 @@ async function numbers()
             });
             if(answer.every((val, idx) => val == equals[idx]))
                 {
-                    content.innerHTML = "Correct!";
+                    content.innerHTML = nmb_correct;
                     await delay(1000);
                     points++;
                 }
             else
                 {
-                    content.innerHTML = "Incorrect!";
+                    content.innerHTML = nmb_incorrect;
                     await delay(1000);
                 }
         }
@@ -97,7 +103,7 @@ async function numbers()
 
         amount_of_numbers++;
     }
-    content.innerHTML = `Score: ${points}`;
+    content.innerHTML = `${nmb_score}: ${points}`;
     await delay(2000);
     document.getElementById("numbers").style.display = "none";
 }
