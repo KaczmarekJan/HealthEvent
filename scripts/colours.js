@@ -19,7 +19,7 @@ async function colours()
         "#FF8C33", // Bright Orange
     ];
         let sounds = blocks.map((_, index) => {
-            let audio = new Audio(`sound${index}.wav`);
+            let audio = new Audio(`sounds/sound${index}.wav`);
             audio.preload = "auto"; // Wczytanie dźwięku wcześniej, aby uniknąć opóźnień
             audio.volume = document.getElementById("volumeSlider").value;
             return audio;
