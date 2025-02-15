@@ -41,9 +41,12 @@ async function memory(){
         await new Promise(resolve => {
             var points_countdown = 100*level;
             var points_countdown_timer = setInterval(function (){
+                //console.log(points_countdown);
                 points_countdown-=5;
-                if(points_countdown<0) points_countdown = 0;
-                point_timer_handle.innerText = "Hurry up! Only " + points_countdown + " points left!"
+                if(points_countdown<0){ points_countdown = 0;
+                    point_timer_handle.innerText = "No more points left :(";
+                }else{
+                    point_timer_handle.innerText = "Hurry up! Only " + points_countdown + " points left!";}
             }, 1000);
             var lastTile = null;
             const handleClick = async (event) => {
