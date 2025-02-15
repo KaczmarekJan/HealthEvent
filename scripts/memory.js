@@ -57,7 +57,7 @@ async function memory(){
 
         var remainigTiles = elements_number/2;
         await new Promise(resolve => {
-            var points_countdown = 100*level;
+            var points_countdown = 150*level;
             point_timer_handle.innerText = mem_hurryup + points_countdown + " " + mem_pointsleft;
             var points_countdown_timer = setInterval(function (){
                 //console.log(points_countdown);
