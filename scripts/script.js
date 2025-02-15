@@ -29,8 +29,8 @@ async function game()
         document.getElementById("m2").style.display = "none";
         document.getElementById("game_content").style.display = "flex";
 
-        //switch(Math.floor(Math.random()*4))
-        switch(3)
+        switch(Math.floor(Math.random()*4))
+        //switch(3)
         {
             case 0:
                     await colours();
@@ -61,27 +61,18 @@ function delay(ms)
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function updatetime() {
+function updatetime() 
+{
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
     const minutes = now.getMinutes().toString().padStart(2, '0');
     const seconds = (60 - now.getSeconds()).toString().padStart(2, '0'); // Odliczanie od 60 w dół
 
-    // Funkcja do zamiany każdej cyfry na div z klasą "digit-box"
-    function wrapDigits(str) {
-        return str.split('').map(digit => `<div class="digit-box">${digit}</div>`).join('');
-    }
-
-    // Tworzenie zegara bez dwukropka, ale z przerwami między elementami
-    document.getElementById("time").innerHTML = `
-        <div class="time-group">${wrapDigits(hours)}</div>:
-        <div class="time-group">${wrapDigits(minutes)}</div>:
-        <div class="time-group">${wrapDigits(seconds)}</div>
-    `;
+    document.getElementById("time").innerText = `${hours}:${minutes}:${seconds}`;
 }
 
-setInterval(updatetime, 1000);
-updatetime();
+setInterval(updatetime, 1000); // Aktualizacja co sekundę
+updatetime(); // Pierwsze wywołanie od razu, bez czekania 1 sekundy
 
 
 
