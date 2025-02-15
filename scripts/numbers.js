@@ -23,8 +23,10 @@ async function numbers()
             {
                 let RandomIndex = Math.ceil(Math.random()*(numbers.length-numbers_range));
                 equals += numbers[RandomIndex];
-                content.innerHTML = "<p class='numerki'>"+numbers.splice(RandomIndex, 1)[0]+"</p>";
+                content.innerHTML = "<div class='numerki'>"+numbers.splice(RandomIndex, 1)[0]+"</div>";
+                
                 await delay(1000);
+
             }
             document.getElementById("numbers_instruction").innerHTML = nmb_placeholder;
             content.innerHTML = `<input type="number" id="userAnswer" placeholder="Enter">`;
@@ -63,7 +65,7 @@ async function numbers()
             {
                 let RandomIndex = Math.ceil(Math.random()*(numbers.length-numbers_range));
                 equals[i] = numbers[RandomIndex];
-                content.innerHTML = numbers.splice(RandomIndex, 1)[0];
+                content.innerHTML = "<div class='numerki'>"+numbers.splice(RandomIndex, 1)[0]+"</div>";
                 await delay(1000);
             }
             document.getElementById("numbers_instruction").innerHTML = nmb_placeholder;

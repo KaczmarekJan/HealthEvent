@@ -52,6 +52,10 @@ body
     margin: 0;
     padding: 0;
 }
+p{
+    padding: 0;
+    margin: 0;
+}
 #background 
 {
     background: url(images/background.png) no-repeat center center;
@@ -211,22 +215,27 @@ body
 }
 #numbers
 {
-    display: none;
-    height: 100%;
-    width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 #numbers > div{
     text-align: center;
     padding: none;
     font-size: 40px;
 }
-#content {
-    width: 100%;
+.numerki {
+    font-size: 200px;
+}
+#numbers_instruction {
+    text-align: center;
 }
 #userAnswer
 {
+    margin-top: 20px;
     background-color: rgba(50, 50, 50, 0.3);
     padding: 15px;
     box-sizing: border-box;
