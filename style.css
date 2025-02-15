@@ -392,8 +392,6 @@ p{
     justify-content: space-between;
     align-items: center;
 }
-
-
 .fieldE {
     height: 30%;
     width: 30%;
@@ -415,7 +413,7 @@ p{
 .fieldH {
     height: 18%;
     width: 18%;
-    border: 2px solid #a637e7;
+    border: 2px solid rgb(248, 88, 200);
     border-radius: 15px;
     transition: 0.5s background-color ease;
     cursor: pointer;
