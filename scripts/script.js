@@ -61,18 +61,33 @@ function delay(ms)
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function updatetime() 
-{
+function updatetime() {
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
     const minutes = now.getMinutes().toString().padStart(2, '0');
     const seconds = (60 - now.getSeconds()).toString().padStart(2, '0'); // Odliczanie od 60 w dół
 
-    document.getElementById("time").innerText = `${hours}:${minutes}:${seconds}`;
+    // Sprawdzenie szerokości ekranu (jeśli telefon, pokazuj tylko sekundy)
+    if (window.innerWidth <= 600) {
+        document.getElementById("time").innerHTML = `
+            <span class="time-part">${seconds}</span>
+        `;
+    } else {
+        document.getElementById("time").innerHTML = `
+            <span class="time-part">${hours}</span>
+            <span class="colon">:</span>
+            <span class="time-part">${minutes}</span>
+            <span class="colon">:</span>
+            <span class="time-part">${seconds}</span>
+        `;
+    }
 }
 
-setInterval(updatetime, 1000); // Aktualizacja co sekundę
-updatetime(); // Pierwsze wywołanie od razu, bez czekania 1 sekundy
+// Aktualizacja co sekundę + sprawdzanie szerokości ekranu
+setInterval(updatetime, 1000);
+window.addEventListener('resize', updatetime); // Odświeżanie przy zmianie rozmiaru
+updatetime(); // Pierwsze wywołanie
+
 
 //moving background
 document.addEventListener("mousemove", (e) => 
