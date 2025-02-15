@@ -30,6 +30,11 @@ async function sequence() {
                 fieldNum = 25 // 5x5 board
                 boardFields = document.getElementsByClassName("fieldH")
                 break;
+            case 4:
+                prefixLetter = 'H' // Hard mode
+                fieldNum = 30 // 5x5 board
+                boardFields = document.getElementsByClassName("fieldH")
+                break;
             default:
                 alert("wrong case number");
                 break;
@@ -117,6 +122,7 @@ async function sequence() {
 
                 // If the user correctly clicks all fields in order, start the next turn
                 if (clicksNum == order.length - 1) {
+                    points+=Math.floor(12.5*level_value);
                     disableClicks()
                     await delay(1000)
                     sequenceGameStart()

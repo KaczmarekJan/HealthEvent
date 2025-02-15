@@ -1,6 +1,6 @@
 var level_value;
 var is_game_running;
-var points = 0; //number of points
+var points = 125; //number of points
 level(2); //default level
 var m_current = 2; //site page number
 site_language(5); //default language
@@ -29,8 +29,8 @@ async function game()
         document.getElementById("m2").style.display = "none";
         document.getElementById("game_content").style.display = "flex";
 
-        switch(Math.floor(Math.random()*4))
-        //switch(1)
+        //switch(Math.floor(Math.random()*4))
+        switch(3)
         {
             case 0:
                     await colours();

@@ -12,7 +12,7 @@ async function numbers()
     for(let i = 0; i < 100; i++) {numbers.push(i);}
     let amount_of_numbers = 3;
     let numbers_range = 90;
-    if(level_value == 3 )
+    if(level_value == 3 || level_value == 4)
     {
         content.innerHTML = instchange_numbers;
         for(let r=0; r<level_value*3; r++)
@@ -41,7 +41,7 @@ async function numbers()
                                     document.getElementById("numbers_instruction").innerHTML = "";
                                     content.innerHTML = nmb_correct;
                                     await delay(1000);
-                                    points++;
+                                    points+=Math.floor(12.5*level_value);
                                     resolve();
                                 }
                             else
@@ -104,7 +104,7 @@ async function numbers()
                     document.getElementById("numbers_instruction").innerHTML = "";
                     content.innerHTML = nmb_correct;
                     await delay(1000);
-                    points++;
+                    points+=Math.floor(12.5*level_value);
                 }
             else
                 {

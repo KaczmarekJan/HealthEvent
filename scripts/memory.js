@@ -57,20 +57,20 @@ async function memory(){
 
         var remainigTiles = elements_number/2;
         await new Promise(resolve => {
-            var points_countdown = 150*level;
+            var points_countdown = Math.floor(50*level);
             point_timer_handle.innerText = mem_hurryup + points_countdown + " " + mem_pointsleft;
             var points_countdown_timer = setInterval(function (){
                 //console.log(points_countdown);
-                points_countdown-=5;
+                points_countdown-=2;
                 if(points_countdown<=0){ 
                     points_countdown = 0;
                     point_timer_handle.style.color = "white";
                     point_timer_handle.innerText = mem_nopoints;
                 }else{
-                    if(points_countdown<=50){
+                    if(points_countdown<=10){
                         countdown_beep.play();
                         point_timer_handle.style.transition = "color 0.5s";
-                        if(points_countdown%10==0){
+                        if(points_countdown%2==0){
                             point_timer_handle.style.color = "red";
                         }else{
                             point_timer_handle.style.color = "white";
@@ -136,10 +136,6 @@ async function memory(){
             break;
 
         case 4:
-            await game(32,level_value);
-            break;
-
-        case 5:
             await game(8,1);
             await game(16,2);
             await game(24,3);

@@ -89,7 +89,7 @@ async function colours()
                             });
                             //deleting listeners and resolving promise
                             blocks.forEach(block => block.removeEventListener("click", handleClick));
-                            points++;
+                            points+=Math.floor(12.5*level_value);
                             //notification
                             notification.innerHTML = nmb_correct;
                             document.getElementById("game_content").insertBefore(notification, document.getElementById("game_content").firstChild);
