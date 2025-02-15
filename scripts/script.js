@@ -27,8 +27,8 @@ async function game()
         document.getElementById("m2").style.display = "none";
         document.getElementById("game_content").style.display = "flex";
 
-        //switch(Math.floor(Math.random()*3))
-        switch(1)
+        switch(Math.floor(Math.random()*4))
+        //switch(1)
         {
             case 0:
                     await colours();
