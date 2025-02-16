@@ -20,7 +20,7 @@ function level(x)
 }
 
 async function game() {
-    if (document.getElementById("m2").style.display !== "none" && document.getElementById("end_game") !== "flex") 
+    if (document.getElementById("m2").style.display !== "none" && getComputedStyle(document.getElementById("end_game")).display !== "flex")
     {
         is_game_running = true;
 
@@ -31,8 +31,8 @@ async function game() {
 
         document.getElementById("container").addEventListener("click", returnToMainMenu, true);
 
-        switch (Math.floor(Math.random() * 4))
-        //switch(0)
+        //switch (Math.floor(Math.random() * 4))
+        switch(3)
         {
             case 0: await colours(); break;
             case 1: await numbers(); break;
@@ -40,7 +40,7 @@ async function game() {
             case 3: await sequence(); break;
             default: alert("wrong case number"); break;
         }
-        document.getElementById("nickname").value = document.getElementById("nickname").value;
+        document.getElementsByClassName("nickname")[1].value = document.getElementsByClassName("nickname")[0].value;
         document.getElementById("end_game").style.display = "flex";
 
         document.getElementById("baner_menu").style.display = "flex";
@@ -49,13 +49,14 @@ async function game() {
         document.getElementById("game_content").style.display = "none";
     }
 }
-function No_rank()
+function No_rank(event) 
 {
+    event.stopPropagation(); // Blokuje dalsze rozprzestrzenianie kliknięcia
     document.getElementById("end_game").style.display = "none";
 }
 function rank()
 {
-    document.getElementById("nickname").value
+    document.getElementById("nickname").value;
 }
 
 function returnToMainMenu(event) 
@@ -149,7 +150,7 @@ function settings() {
         setTimeout(() => {
             settingsWindow.style.display = "none";
             settingsWindow.classList.remove("hide");
-        }, 300); // Po zakończeniu animacji fade-out
+        }, 500); // Po zakończeniu animacji fade-out
     } else {
         settingsWindow.style.display = "block";
         settingsWindow.classList.add("show");
@@ -163,7 +164,7 @@ function settings() {
             setTimeout(() => {
                 settingsWindow.style.display = "none";
                 settingsWindow.classList.remove("hide");
-            }, 300);
+            }, 500);
 
             document.removeEventListener("click", closeSettings);
 
