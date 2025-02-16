@@ -19,17 +19,58 @@
                 
                 data.forEach(player => 
                 {
-                    const row = document.createElement("tr");
-                    row.innerHTML = `
-                        <td>${player.place}</td>
-                        <td>${player.nickname}</td>
-                        <td>${player.colours}</td>
-                        <td>${player.memory}</td>
-                        <td>${player.number}</td>
-                        <td>${player.sequence}</td>
-                        <td>${player.summary}</td>
-                    `;
-                    tableBody.appendChild(row);
+                    if(typeof player.you === 'undefined'){
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${player.place}</td>
+                            <td>${player.nickname}</td>
+                            <td>${player.colours}</td>
+                            <td>${player.memory}</td>
+                            <td>${player.number}</td>
+                            <td>${player.sequence}</td>
+                            <td>${player.summary}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    }else{
+                        if(player.place > 10){
+                            const space = document.createElement("tr");
+                            const row = document.createElement("tr");
+                            space.innerHTML = `
+                                <td>...</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                            `;
+                            row.innerHTML = `
+                            <td>${player.place}</td>
+                            <td>${player.nickname}</td>
+                            <td>${player.colours}</td>
+                            <td>${player.memory}</td>
+                            <td>${player.number}</td>
+                            <td>${player.sequence}</td>
+                            <td>${player.summary}</td>
+                            `;
+                            tableBody.appendChild(space);
+                            tableBody.appendChild(row);
+                        }else{
+                            console.log(player.place);
+                            const row = document.createElement("tr");
+                            row.innerHTML = `
+                                <td>${player.place}</td>
+                                <td>${player.nickname}</td>
+                                <td>${player.colours}</td>
+                                <td>${player.memory}</td>
+                                <td>${player.number}</td>
+                                <td>${player.sequence}</td>
+                                <td>${player.summary}</td>
+                            `;
+                            tableBody.appendChild(row);
+                            row.style.border = "5px solid #FFD700";
+                        }
+                    }
                 });
             })
             .catch(error => console.error("Błąd:", error));
