@@ -138,25 +138,43 @@ function updatetitle(title_text)
     document.getElementById("title").innerHTML = window[title_text];
 }
 //settings button
-function settings() 
-{
+function settings() {
     document.getElementById("m2").style.display = "none";
     const settingsWindow = document.getElementById("settings_window");
-    settingsWindow.style.display = "block";
-    settingsWindow.style.opacity = "1";
-    
+
+    if (settingsWindow.classList.contains("show")) {
+        settingsWindow.classList.remove("show");
+        settingsWindow.classList.add("hide");
+
+        setTimeout(() => {
+            settingsWindow.style.display = "none";
+            settingsWindow.classList.remove("hide");
+        }, 300); // Po zakończeniu animacji fade-out
+    } else {
+        settingsWindow.style.display = "block";
+        settingsWindow.classList.add("show");
+    }
+
     document.addEventListener("click", function closeSettings(e) {
         if (!settingsWindow.contains(e.target) && e.target.tagName !== 'BUTTON') {
-            settingsWindow.style.display = "none";
-            // Usunięcie event listenera po zamknięciu
+            settingsWindow.classList.remove("show");
+            settingsWindow.classList.add("hide");
+
+            setTimeout(() => {
+                settingsWindow.style.display = "none";
+                settingsWindow.classList.remove("hide");
+            }, 300);
+
             document.removeEventListener("click", closeSettings);
-            if(document.getElementById("m1").style.display !== "block" && document.getElementById("m3").style.display !== "block")
-            {
+
+            if (document.getElementById("m1").style.display !== "block" &&
+                document.getElementById("m3").style.display !== "block") {
                 document.getElementById("m2").style.display = "block";
             }
         }
     });
 }
+
 
 //language button
 function site_language(x)
