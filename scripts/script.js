@@ -40,6 +40,7 @@ async function game() {
             case 3: await sequence(); break;
             default: alert("wrong case number"); break;
         }
+        document.getElementById("nickname").value = document.getElementById("nickname").value;
         document.getElementById("end_game").style.display = "flex";
 
         document.getElementById("baner_menu").style.display = "flex";
