@@ -31,8 +31,8 @@ async function game() {
 
         document.getElementById("container").addEventListener("click", returnToMainMenu, true);
 
-        //switch (Math.floor(Math.random() * 4))
-        switch(3)
+        switch (Math.floor(Math.random() * 4))
+        //switch(3)
         {
             case 0: await colours(); break;
             case 1: await numbers(); break;

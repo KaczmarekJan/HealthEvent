@@ -1,13 +1,13 @@
     function getRanking() 
     {
-        let userId = 1;
-        if(localStorage.getItem("id")){
-            userId = localStorage.getItem("id");
+        let body = "";
+        if(localStorage.getItem("id")){ //if user doesn't have id, do not show him in ranking
+            body =  {id:localStorage.getItem("id")}; 
         }
         const request = new Request("https://memory-trainer.ct8.pl/ranking.php", 
         {
             method: "POST",
-            body: JSON.stringify({"id": userId}),
+            body: JSON.stringify(body),
             headers: { "Content-Type": "application/json" }
         });
         fetch(request)
@@ -48,28 +48,29 @@
             fetch(request)
                .then(response => response.json())
                .then(data => {
-                
+                    console.log("Ranking updated");
                })
-            .catch(error => console.error("Błąd:", error));
+            .catch(error => console.error("Error:", error));
         }else{
-            let request = new Request("https://memory-trainer.ct8.pl/ranking.php", {
+             let request = new Request("https://memory-trainer.ct8.pl/ranking.php", {
                 method: "POST",
                 body: JSON.stringify({"nick": localStorage.getItem("nick"),"type": type,"value": value}),
                 headers: { "Content-Type": "application/json" }
-        });
-        fetch(request)
-            .then(response => response.json())
-            .then(data => {
-                    localStorage.setItem("id", data.id);
-                    console.log(data.id);
-                    localStorage.setItem("key", data.key);
-            })
-            .catch(error => console.error("Błąd:", error));
+            });
+            fetch(request)
+             .then(response => response.json())
+                .then(data => {
+                        localStorage.setItem("id", data.id);
+                        localStorage.setItem("key", data.key);
+                        console.log("New player added to ranking");
+                })
+                .catch(error => console.error("Error:", error));
         }
     }
 
     function newNick(nick){
         localStorage.clear();
+        console.log("Old ranking access keys dropped");
         localStorage.setItem("nick", nick);
     }
 
