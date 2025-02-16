@@ -78,7 +78,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Miejsce</th>
+                        <th>Place</th>
                         <th>Nickname</th>
                         <th>Colours</th>
                         <th>Memory</th>
@@ -91,20 +91,24 @@
                 </tbody>
             </table>
                 <script>
-                    const request = new Request("https://memory-trainer.ct8.pl/ranking.php", {
+                    const request = new Request("https://memory-trainer.ct8.pl/ranking.php", 
+                    {
                         method: "POST",
-                        body: '{"id": "0"}', // W razie potrzeby można edytować
+                        body: '{"id": "0"}',
                         headers: { "Content-Type": "application/json" }
                     });
 
-                    function getRanking() {
+                    function getRanking() 
+                    {
                         fetch(request)
                             .then(response => response.json())
-                            .then(data => {
+                            .then(data => 
+                            {
                                 const tableBody = document.getElementById("ranking-body");
-                                tableBody.innerHTML = ""; // Czyści tabelę przed wstawieniem danych
+                                tableBody.innerHTML = "";
                                 
-                                data.forEach(player => {
+                                data.forEach(player => 
+                                {
                                     const row = document.createElement("tr");
                                     row.innerHTML = `
                                         <td>${player.place}</td>
@@ -120,8 +124,6 @@
                             })
                             .catch(error => console.error("Błąd:", error));
                     }
-
-                    // Automatyczne pobranie rankingu po załadowaniu strony
                     getRanking();
                 </script>
             </article>

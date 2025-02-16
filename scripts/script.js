@@ -20,7 +20,7 @@ function level(x)
 }
 
 async function game() {
-    if (document.getElementById("m2").style.display !== "none") 
+    if (document.getElementById("m2").style.display !== "none" && document.getElementById("end_game") !== "flex") 
     {
         is_game_running = true;
 
