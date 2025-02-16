@@ -363,13 +363,14 @@ p{
     overflow: auto;
 }
 #settings,
-#level
+#level,
+#info
 {
     float: left;
 }
 #info
 {
-    float: right;
+    margin-left: 100px;
 }
 #end_game
 {
