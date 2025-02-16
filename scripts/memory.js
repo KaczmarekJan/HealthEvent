@@ -60,6 +60,10 @@ async function memory(){
             var points_countdown = Math.floor(50*level);
             point_timer_handle.innerText = mem_hurryup + points_countdown + " " + mem_pointsleft;
             var points_countdown_timer = setInterval(function (){
+                if(!is_game_running){
+                    clearInterval(points_countdown_timer); //disable points timer
+                    resolve();
+                }
                 //console.log(points_countdown);
                 points_countdown-=2;
                 if(points_countdown<=0){ 

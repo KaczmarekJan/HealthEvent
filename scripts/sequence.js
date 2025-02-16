@@ -1,6 +1,15 @@
 async function sequence() {
     // Wrap everything in a Promise to ensure asynchronous execution
     await new Promise(resolve => {
+        //exit code
+        var exitCheck = setInterval(function (){
+            if(!is_game_running){
+                clearInterval(exitCheck); //disable points timer
+                document.getElementById("sequence").style.display = "none"; // Hide the game
+                resolve();
+            }
+        },200);
+
         document.getElementById("sequence").style.display = "flex"; // Show the sequence game container
 
         order = [] // Array storing the correct sequence order
@@ -90,6 +99,11 @@ async function sequence() {
 
             // Show the previously remembered sequence
             for (i = 1; i < order.length; i++) {
+                if(!is_game_running){
+                    clearInterval(exitCheck); //disable points timer
+                    document.getElementById("sequence").style.display = "none"; // Hide the game
+                    return;
+                }
                 document.getElementById(prefixLetter + order[i]).style.backgroundColor = "#a637e7"; // Highlight sequence step
                 sound(order[i]) // Play sound for the highlighted tile
                 await delay(500) // Wait for half a second
