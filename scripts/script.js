@@ -82,32 +82,6 @@ function delay(ms)
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function updatetime() {
-    const now = new Date();
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const seconds = (60 - now.getSeconds()).toString().padStart(2, '0');
-
-    if (window.innerWidth <= 600) {
-        document.getElementById("time").innerHTML = `
-            <span class="time-part">${seconds}</span>
-        `;
-    } else {
-        document.getElementById("time").innerHTML = `
-            <span class="time-part">${hours}</span>
-            <span class="colon">:</span>
-            <span class="time-part">${minutes}</span>
-            <span class="colon">:</span>
-            <span class="time-part">${seconds}</span>
-        `;
-    }
-}
-
-setInterval(updatetime, 1000);
-window.addEventListener('resize', updatetime);
-updatetime();
-
-
 //moving background
 document.addEventListener("mousemove", (e) => 
     {
