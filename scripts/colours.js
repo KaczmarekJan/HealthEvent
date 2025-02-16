@@ -6,7 +6,16 @@ async function colours() {
             clearInterval(gameChecker);
             document.getElementById("colours").style.display = "none";
         }
-    }, 1000);
+    }, 500); // Sprawdzanie co 500ms dla szybszego zatrzymania
+
+    // Funkcja do bezpiecznego opóźnienia (sprawdza co 100ms, czy gra została zatrzymana)
+    async function safeDelay(ms) {
+        for (let i = 0; i < ms / 100; i++) {
+            if (!is_game_running) return false;
+            await delay(100);
+        }
+        return true;
+    }
 
     // Variables
     var number_of_blocks = Array.from(document.getElementsByClassName("colour")).length - 3; 
@@ -54,11 +63,11 @@ async function colours() {
                 if (!is_game_running) return;
 
                 sounds[randomIndex].play();
-                await delay(250);
+                if (!(await safeDelay(250))) return;
                 blocks[randomIndex].style.transform = `scale(1.2)`;
-                await delay(250);
+                if (!(await safeDelay(250))) return;
                 blocks[randomIndex].style.transform = `scale(1)`;
-                await delay(250);
+                if (!(await safeDelay(250))) return;
             }
         }
 
@@ -73,15 +82,15 @@ async function colours() {
             if (!document.querySelector('#colours h2')) notification = document.createElement("h2");
 
             const handleClick = async (event) => {
-                if (!is_game_running) return;
+                if (!is_game_running) return resolve(); // **Przerwanie obsługi kliknięcia**
 
                 const clickedBlock = event.target;
                 const blockIndex = blocks.indexOf(clickedBlock);
 
                 clickedBlock.style.transform = `scale(1.2)`;
-                await delay(250);
+                if (!(await safeDelay(250))) return resolve();
                 clickedBlock.style.transform = `scale(1)`;
-                await delay(500);
+                if (!(await safeDelay(500))) return resolve();
 
                 count[blockIndex]++;
                 if (count.every((val, idx) => val == required_count[idx])) {
@@ -90,7 +99,11 @@ async function colours() {
                     points += Math.floor(12.5 * level_value);
                     notification.innerHTML = nmb_correct;
                     document.getElementById("game_content").insertBefore(notification, document.getElementById("game_content").firstChild);
-                    await delay(500);
+                    if (!(await safeDelay(500)))
+                    {
+                        notification.remove(); 
+                        return resolve();
+                    }
                     notification.remove();
                     blocks.forEach(block => block.style.display = "block");
                     resolve();
@@ -99,7 +112,11 @@ async function colours() {
                     blocks.forEach(block => block.removeEventListener("click", handleClick));
                     notification.innerHTML = nmb_incorrect;
                     document.getElementById("game_content").insertBefore(notification, document.getElementById("game_content").firstChild);
-                    await delay(500);
+                    if (!(await safeDelay(500)))
+                        {
+                            notification.remove(); 
+                            return resolve();
+                        }
                     notification.remove();
                     blocks.forEach(block => block.style.display = "block");
                     resolve();
@@ -120,7 +137,7 @@ async function colours() {
     const score = document.createElement("h2");
     score.textContent = `${nmb_score}: ${points}`;
     document.getElementById("colours").appendChild(score);
-    await delay(2000);
+    if (!(await safeDelay(2000))) return;
     score.remove();
     document.getElementById("colours").style.display = "none";
 }

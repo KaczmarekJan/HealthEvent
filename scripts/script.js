@@ -32,7 +32,7 @@ async function game() {
         document.getElementById("container").addEventListener("click", returnToMainMenu, true);
 
         //switch (Math.floor(Math.random() * 2))
-        switch(1)
+        switch(0)
         {
             case 0: await colours(); break;
             case 1: await numbers(); break;
