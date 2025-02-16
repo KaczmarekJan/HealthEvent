@@ -7,14 +7,13 @@ var nmb_placeholder = "Input the numbers that were displayed one by one.";
 
 async function numbers() {
     document.getElementById("numbers_instruction").innerHTML = "";
-    // Sprawdzanie co sekundę, czy gra powinna się zatrzymać
     let gameChecker = setInterval(() => {
         if (!is_game_running) {
             console.log("Gra zatrzymana!");
             clearInterval(gameChecker);
             document.getElementById("numbers").style.display = "none";
         }
-    }, 500); // Skrócony czas sprawdzania na 500ms dla szybszego zatrzymania
+    }, 500);
 
     document.getElementById("numbers").style.display = "flex";
     const content = document.getElementById("content");
@@ -36,13 +35,13 @@ async function numbers() {
         content.innerHTML = instchange_numbers;
 
         for (let r = 0; r < level_value * 3; r++) {
-            if (!is_game_running) return; // ✅ Natychmiastowe zatrzymanie
+            if (!is_game_running) return;
 
             if (!(await safeDelay(1000))) return;
 
             let equals = 0;
             for (let i = 0; i < amount_of_numbers; i++) {
-                if (!is_game_running) return; // ✅ Zatrzymanie animacji liczb
+                if (!is_game_running) return;
 
                 let RandomIndex = Math.ceil(Math.random() * (numbers.length - numbers_range));
                 equals += numbers[RandomIndex];
@@ -57,7 +56,7 @@ async function numbers() {
             await new Promise(resolve => {
                 const userAnswer = document.getElementById("userAnswer");
                 const checkAnswer = async (event) => {
-                    if (!is_game_running) return resolve(); // ✅ Natychmiastowe wyjście
+                    if (!is_game_running) return resolve();
 
                     if (event.key === "Enter") {
                         if (userAnswer.value == equals) {
@@ -86,7 +85,7 @@ async function numbers() {
         content.innerHTML = numberbutremeber;
 
         for (let r = 0; r < level_value * 3; r++) {
-            if (!is_game_running) return; // ✅ Natychmiastowe zatrzymanie
+            if (!is_game_running) return;
 
             if (!(await safeDelay(1000))) return;
 
@@ -110,7 +109,7 @@ async function numbers() {
                 const userAnswer = document.getElementById("userAnswer");
                 let i = 0;
                 const checkAnswer = async (event) => {
-                    if (!is_game_running) return resolve(); // ✅ Natychmiastowe wyjście
+                    if (!is_game_running) return resolve();
 
                     if (event.key === "Enter") {
                         answer[i] = userAnswer.value;
