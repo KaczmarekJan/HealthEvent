@@ -136,6 +136,9 @@ var text3 = "<strong>Ranking</strong>";
 function updatetitle(title_text)
 {
     document.getElementById("title").innerHTML = window[title_text];
+    if(m_current == 3){
+        getRanking();
+    }
 }
 //settings button
 function settings() {

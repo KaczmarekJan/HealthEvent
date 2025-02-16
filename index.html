@@ -90,42 +90,6 @@
                 <tbody id="ranking-body">
                 </tbody>
             </table>
-                <script>
-                    const request = new Request("https://memory-trainer.ct8.pl/ranking.php", 
-                    {
-                        method: "POST",
-                        body: '{"id": "0"}',
-                        headers: { "Content-Type": "application/json" }
-                    });
-
-                    function getRanking() 
-                    {
-                        fetch(request)
-                            .then(response => response.json())
-                            .then(data => 
-                            {
-                                const tableBody = document.getElementById("ranking-body");
-                                tableBody.innerHTML = "";
-                                
-                                data.forEach(player => 
-                                {
-                                    const row = document.createElement("tr");
-                                    row.innerHTML = `
-                                        <td>${player.place}</td>
-                                        <td>${player.nickname}</td>
-                                        <td>${player.colours}</td>
-                                        <td>${player.memory}</td>
-                                        <td>${player.number}</td>
-                                        <td>${player.sequence}</td>
-                                        <td>${player.summary}</td>
-                                    `;
-                                    tableBody.appendChild(row);
-                                });
-                            })
-                            .catch(error => console.error("Błąd:", error));
-                    }
-                    getRanking();
-                </script>
             </article>
             <section id="game_content">
                 <div id="colours">
