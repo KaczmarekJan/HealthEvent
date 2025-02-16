@@ -20,6 +20,7 @@
                 data.forEach(player => 
                 {
                     if(typeof player.you === 'undefined'){
+                        console.log("ok");
                         const row = document.createElement("tr");
                         row.innerHTML = `
                             <td>${player.place}</td>
@@ -56,7 +57,6 @@
                             tableBody.appendChild(space);
                             tableBody.appendChild(row);
                         }else{
-                            console.log(player.place);
                             const row = document.createElement("tr");
                             row.innerHTML = `
                                 <td>${player.place}</td>
@@ -67,8 +67,8 @@
                                 <td>${player.sequence}</td>
                                 <td>${player.summary}</td>
                             `;
+                            row.style.animation = "blink 1s infinite alternate";
                             tableBody.appendChild(row);
-                            row.style.border = "5px solid #FFD700";
                         }
                     }
                 });
