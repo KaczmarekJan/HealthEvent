@@ -40,12 +40,21 @@ async function game() {
             case 3: await sequence(); break;
             default: alert("wrong case number"); break;
         }
+        document.getElementById("end_game").style.display = "flex";
 
         document.getElementById("baner_menu").style.display = "flex";
         document.getElementById("baner_game").style.display = "none";
         document.getElementById("m2").style.display = "block";
         document.getElementById("game_content").style.display = "none";
     }
+}
+function No_rank()
+{
+    document.getElementById("end_game").style.display = "none";
+}
+function rank()
+{
+    document.getElementById("nickname").value
 }
 
 function returnToMainMenu(event) 
