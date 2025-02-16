@@ -75,7 +75,55 @@
                 <p>Click anywhere to start</p>
             </section>
             <article id="m3">
-                <p id="rank"></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Miejsce</th>
+                        <th>Nickname</th>
+                        <th>Colours</th>
+                        <th>Memory</th>
+                        <th>Number</th>
+                        <th>Sequence</th>
+                        <th>Summary</th>
+                    </tr>
+                </thead>
+                <tbody id="ranking-body">
+                </tbody>
+            </table>
+                <script>
+                    const request = new Request("https://memory-trainer.ct8.pl/ranking.php", {
+                        method: "POST",
+                        body: '{"id": "0"}', // W razie potrzeby można edytować
+                        headers: { "Content-Type": "application/json" }
+                    });
+
+                    function getRanking() {
+                        fetch(request)
+                            .then(response => response.json())
+                            .then(data => {
+                                const tableBody = document.getElementById("ranking-body");
+                                tableBody.innerHTML = ""; // Czyści tabelę przed wstawieniem danych
+                                
+                                data.forEach(player => {
+                                    const row = document.createElement("tr");
+                                    row.innerHTML = `
+                                        <td>${player.place}</td>
+                                        <td>${player.nickname}</td>
+                                        <td>${player.colours}</td>
+                                        <td>${player.memory}</td>
+                                        <td>${player.number}</td>
+                                        <td>${player.sequence}</td>
+                                        <td>${player.summary}</td>
+                                    `;
+                                    tableBody.appendChild(row);
+                                });
+                            })
+                            .catch(error => console.error("Błąd:", error));
+                    }
+
+                    // Automatyczne pobranie rankingu po załadowaniu strony
+                    getRanking();
+                </script>
             </article>
             <section id="game_content">
                 <div id="colours">
