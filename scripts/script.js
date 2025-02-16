@@ -93,31 +93,42 @@ document.addEventListener("mousemove", (e) =>
 
 //next page
 
-function next() 
-{
-    document.getElementById("m" + m_current).style.display = "none";
-    m_current++;
-    if (m_current == 4) 
-    {
-        m_current = 1;
-    } 
-    document.getElementById("m" + m_current).style.display = "block";
-    title_text = "text"+m_current;
-    updatetitle(title_text);
+function next() {
+    let current = document.getElementById("m" + m_current);
+    let nextIndex = m_current + 1;
+    if (nextIndex > 3) nextIndex = 1;
+    let next = document.getElementById("m" + nextIndex);
+
+    current.style.animation = "slideOutLeft 0.5s forwards";
+    next.style.animation = "slideInRight 0.5s forwards";
+
+    setTimeout(() => {
+        current.style.display = "none";
+        next.style.display = "block";
+        m_current = nextIndex;
+        title_text = "text" + m_current;
+        updatetitle(title_text);
+    }, 500);
 }
-//previous page
-function previous() 
-{
-    document.getElementById("m" + m_current).style.display = "none";
-    m_current--;
-    if (m_current == 0) 
-    {
-            m_current = 3;
-    } 
-    document.getElementById("m" + m_current).style.display = "block";
-    title_text = "text"+m_current;
-    updatetitle(title_text);
+
+function previous() {
+    let current = document.getElementById("m" + m_current);
+    let prevIndex = m_current - 1;
+    if (prevIndex < 1) prevIndex = 3;
+    let prev = document.getElementById("m" + prevIndex);
+
+    current.style.animation = "slideOutRight 0.5s forwards";
+    prev.style.animation = "slideInLeft 0.5s forwards";
+
+    setTimeout(() => {
+        current.style.display = "none";
+        prev.style.display = "block";
+        m_current = prevIndex;
+        title_text = "text" + m_current;
+        updatetitle(title_text);
+    }, 500);
 }
+
 var text1 = "<strong>Article</strong>";
 var text2 = "<strong>Game</strong>";
 var text3 = "<strong>Ranking</strong>";
