@@ -1,9 +1,13 @@
     function getRanking() 
     {
+        let userId = 1;
+        if(localStorage.getItem("id")){
+            userId = localStorage.getItem("id");
+        }
         const request = new Request("https://memory-trainer.ct8.pl/ranking.php", 
         {
             method: "POST",
-            body: '{"id": "1"}',
+            body: JSON.stringify({"id": userId}),
             headers: { "Content-Type": "application/json" }
         });
         fetch(request)
