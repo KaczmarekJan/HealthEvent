@@ -17,7 +17,7 @@
     <section id="container">
         <header>
             <div id="baner_menu">
-                <section><input type:"text" id="name" placeholder="Enter your Name"></section>
+                <section><input type:"text" class="nickname" placeholder="Enter your Name"></section>
                 <section id="baner_buttons_container">
                     <section>
                         <button class="slider_button" onclick="previous()"><img src="images/left.png" alt="previous" class="arrow"></button>
@@ -130,9 +130,9 @@
                 </div>
             </section>
             <section id="end_game">
-                <label id="Nickname">Nickname: <input type="text" id="nickname" placeholder="Enter your Name"></label><br/>
+                <label id="Nickname">Nickname: <input type="text" class="nickname" placeholder="Enter your Name"></label><br/>
                 <strong>Do you want to add your score to a ranking?</strong><span id="score"></span>
-                <div id="yes" onclick="rank()">Yes</div><div id="no" onclick="No_rank()">No</div>
+                <div id="yes" onclick="rank()">Yes</div><div id="no" onclick="No_rank(event)">No</div>
             </section>
         </main>
         <footer></footer>
