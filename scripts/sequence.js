@@ -6,7 +6,7 @@ async function sequence() {
         audio.volume = document.getElementById("volumeSlider").value;
         return audio;
     });
-    console.log(sounds);
+    //console.log(sounds);
     function sound(x) {
         sounds[x%4].play();
     }
