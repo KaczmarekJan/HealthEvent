@@ -1,4 +1,16 @@
+
 async function sequence() {
+    var sounds = Array(4).fill(0).map((_, index) => {
+        let audio = new Audio(`sounds/sound${index}.wav`);
+        audio.preload = "auto";
+        audio.volume = document.getElementById("volumeSlider").value;
+        return audio;
+    });
+    console.log(sounds);
+    function sound(x) {
+        sounds[x%4].play();
+    }
+
     // Wrap everything in a Promise to ensure asynchronous execution
     await new Promise(resolve => {
         //exit code
@@ -84,11 +96,7 @@ async function sequence() {
         sequenceGameStart() // Start the game sequence
         createBoard(prefixLetter, fieldNum); // Generate the game board
 
-        // Play sound effect corresponding to a number
-        function sound(x) {
-            audio = new Audio(`sounds/sound${x % 4}.wav`) // Play one of 4 sound files
-            audio.play()
-        }
+        
 
         // Main game function - shows the sequence and expects user input
         async function sequenceGameStart() {
