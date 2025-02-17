@@ -159,7 +159,7 @@ function settings() {
     const settingsWindow = document.getElementById("settings_window");
 
     function closeSettings(e) {
-        if ((!settingsWindow.contains(e.target)) && e.target.tagName !== 'button') {
+        if ((!settingsWindow.contains(e.target)) && e.target.tagName !== 'BUTTON') {
             console.log(e.target.tagName);
             settingsWindow.classList.remove("show");
             settingsWindow.classList.add("hide");
