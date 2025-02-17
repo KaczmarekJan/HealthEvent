@@ -39,7 +39,7 @@ async function game() {
         }
         switch (current_game)
         {
-            case 0: await colours(); break; //there might be a lot of bugs so be careful
+            case 0: await colours(); break; 
             case 1: await numbers(); break;
             case 2: await memory(); break;
             case 3: await sequence(); break;
