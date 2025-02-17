@@ -1,5 +1,5 @@
 var level_value;
-var is_game_running;
+var is_game_running = false;
 //var points = 125; //number of points
 var points = 0; //number of points
 level(2); //default level
@@ -22,6 +22,7 @@ function level(x)
 }
 
 async function game() {
+    
     if (document.getElementById("m2").style.display !== "none" && getComputedStyle(document.getElementById("end_game")).display !== "flex")
     {
         is_game_running = true;
@@ -154,13 +155,13 @@ function updatetitle(title_text)
     }
 }
 //settings button
-function settings() {
+function settings(e) {
     document.getElementById("m2").style.display = "none";
     const settingsWindow = document.getElementById("settings_window");
 
     function closeSettings(e) {
-        if ((!settingsWindow.contains(e.target)) && e.target.tagName !== 'BUTTON') {
-            console.log(e.target.tagName);
+        if (((!settingsWindow.contains(e.target)) && e.target.tagName !== 'BUTTON') || e.target.id==="setup-icon") {
+            //console.log(e.target.tagName);
             settingsWindow.classList.remove("show");
             settingsWindow.classList.add("hide");
             document.removeEventListener("click", closeSettings);
@@ -177,23 +178,10 @@ function settings() {
         }
     }
 
-    if (settingsWindow.classList.contains("show")) {
-        settingsWindow.classList.remove("show");
-        settingsWindow.classList.add("hide");
-
-        document.removeEventListener("click", closeSettings);
-        if (document.getElementById("m1").style.display !== "block" &&
-        document.getElementById("m3").style.display !== "block" &&
-        document.getElementById("game_content").style.display !== "flex") {
-                document.getElementById("m2").style.display = "block";
-        }
-        setTimeout(() => {
-            settingsWindow.style.display = "none";
-            settingsWindow.classList.remove("hide");
-        }, 500); // Po zakończeniu animacji fade-out
-    } else {
+    if (!settingsWindow.classList.contains("show")) {
         settingsWindow.style.display = "block";
         settingsWindow.classList.add("show");
+        e.stopPropagation();
         document.addEventListener("click", closeSettings);
     }
 }
