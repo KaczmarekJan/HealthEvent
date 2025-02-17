@@ -1,6 +1,7 @@
 var level_value;
 var is_game_running;
-var points = 125; //number of points
+//var points = 125; //number of points
+var points = 0; //number of points
 level(2); //default level
 var m_current = 2; //site page number
 site_language(5); //default language
@@ -31,7 +32,7 @@ async function game() {
         document.getElementById("game_content").style.display = "flex";
 
         document.getElementById("container").addEventListener("click", returnToMainMenu, true);
-
+        points = 0;
         //current_game = 2; 
         current_game = Math.floor(Math.random() * 4);
         switch (current_game)
