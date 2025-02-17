@@ -36,6 +36,8 @@ async function memory(){
         }
 
         console.log("Preloading images");
+        var memory_card_handle = new Image();
+        memory_card_handle.src = `memory/memory-card.jpg`;
         let images_handle = images.map((element) => { //for tricking browser to preload images
             var img = new Image();
             img.src = `memory/${element}.jpg`;

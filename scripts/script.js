@@ -29,6 +29,7 @@ async function game() {
         document.getElementById("baner_menu").style.display = "none";
         document.getElementById("baner_game").style.display = "flex";
         document.getElementById("m2").style.display = "none";
+        
         document.getElementById("game_content").style.display = "flex";
 
         document.getElementById("container").addEventListener("click", returnToMainMenu, true);
@@ -157,10 +158,35 @@ function settings() {
     document.getElementById("m2").style.display = "none";
     const settingsWindow = document.getElementById("settings_window");
 
+    function closeSettings(e) {
+        if ((!settingsWindow.contains(e.target)) && e.target.tagName !== 'button') {
+            console.log(e.target.tagName);
+            settingsWindow.classList.remove("show");
+            settingsWindow.classList.add("hide");
+            document.removeEventListener("click", closeSettings);
+            setTimeout(() => {
+                settingsWindow.style.display = "none";
+                settingsWindow.classList.remove("hide");
+            }, 500);
+
+
+            if (document.getElementById("m1").style.display !== "block" &&
+                document.getElementById("m3").style.display !== "block") {
+                document.getElementById("m2").style.display = "block";
+            }
+        }
+    }
+
     if (settingsWindow.classList.contains("show")) {
         settingsWindow.classList.remove("show");
         settingsWindow.classList.add("hide");
 
+        document.removeEventListener("click", closeSettings);
+        if (document.getElementById("m1").style.display !== "block" &&
+        document.getElementById("m3").style.display !== "block" &&
+        document.getElementById("game_content").style.display !== "flex") {
+                document.getElementById("m2").style.display = "block";
+        }
         setTimeout(() => {
             settingsWindow.style.display = "none";
             settingsWindow.classList.remove("hide");
@@ -168,26 +194,8 @@ function settings() {
     } else {
         settingsWindow.style.display = "block";
         settingsWindow.classList.add("show");
+        document.addEventListener("click", closeSettings);
     }
-
-    document.addEventListener("click", function closeSettings(e) {
-        if (!settingsWindow.contains(e.target) && e.target.tagName !== 'BUTTON') {
-            settingsWindow.classList.remove("show");
-            settingsWindow.classList.add("hide");
-
-            setTimeout(() => {
-                settingsWindow.style.display = "none";
-                settingsWindow.classList.remove("hide");
-            }, 500);
-
-            document.removeEventListener("click", closeSettings);
-
-            if (document.getElementById("m1").style.display !== "block" &&
-                document.getElementById("m3").style.display !== "block") {
-                document.getElementById("m2").style.display = "block";
-            }
-        }
-    });
 }
 
 
