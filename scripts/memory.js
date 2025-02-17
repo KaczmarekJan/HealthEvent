@@ -34,6 +34,13 @@ async function memory(){
             images[i] = random;
             images[i+1] = random;
         }
+
+        console.log("Preloading images");
+        let images_handle = images.map((element) => { //for tricking browser to preload images
+            var img = new Image();
+            img.src = `memory/${element}.jpg`;
+            return img;
+        });
         
         //Shuffle array
         for (var i = images.length - 1; i >= 0; i--) {
@@ -145,6 +152,6 @@ async function memory(){
             break;
 
     }
-
+   
     document.getElementById("memory").style.display = "none";
 }
