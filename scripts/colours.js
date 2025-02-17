@@ -1,12 +1,6 @@
 //colours game
 async function colours() {
-    let gameChecker = setInterval(() => {
-        if (!is_game_running) {
-            console.log("Gra zatrzymana!");
-            clearInterval(gameChecker);
-            document.getElementById("colours").style.display = "none";
-        }
-    }, 500); // Sprawdzanie co 500ms dla szybszego zatrzymania
+    
 
     // Funkcja do bezpiecznego opóźnienia (sprawdza co 100ms, czy gra została zatrzymana)
     async function safeDelay(ms) {
@@ -37,6 +31,7 @@ async function colours() {
 
     for (let i = 0; i < blocks.length; i++) {
         let randomIndex = Math.floor(Math.random() * blocks_colours.length);
+        blocks[i].style="";
         blocks[i].style.display = "block";
         blocks[i].style.backgroundColor = blocks_colours.splice(randomIndex, 1)[0];
     }
@@ -77,20 +72,37 @@ async function colours() {
         }
 
         await new Promise(resolve => {
-            var count = new Array(4).fill(0);
             let notification;
+            let gameChecker = setInterval(() => {
+                if (!is_game_running) {
+                    console.log("Gra zatrzymana!");
+                    clearInterval(gameChecker);
+                    document.getElementById("colours").style.display = "none";
+                    try{
+                        notification.remove();
+                    }catch(e){}
+                    resolve();
+                }
+            }, 100); // Sprawdzanie co 100ms dla szybszego zatrzymania
+            var count = new Array(4).fill(0);
             if (!document.querySelector('#colours h2')) notification = document.createElement("h2");
 
             const handleClick = async (event) => {
-                if (!is_game_running) return resolve(); // **Przerwanie obsługi kliknięcia**
+                if (!is_game_running){
+                    return;
+                } // **Przerwanie obsługi kliknięcia**
 
                 const clickedBlock = event.target;
                 const blockIndex = blocks.indexOf(clickedBlock);
 
                 clickedBlock.style.transform = `scale(1.2)`;
-                if (!(await safeDelay(250))) return resolve();
+                if (!(await safeDelay(250))) {
+                    return;
+                }
                 clickedBlock.style.transform = `scale(1)`;
-                if (!(await safeDelay(500))) return resolve();
+                if (!(await safeDelay(500))) {
+                    return;
+                }
 
                 count[blockIndex]++;
                 if (count.every((val, idx) => val == required_count[idx])) {
@@ -102,7 +114,7 @@ async function colours() {
                     if (!(await safeDelay(500)))
                     {
                         notification.remove(); 
-                        return resolve();
+                        return;
                     }
                     notification.remove();
                     blocks.forEach(block => block.style.display = "block");
@@ -115,7 +127,7 @@ async function colours() {
                     if (!(await safeDelay(500)))
                         {
                             notification.remove(); 
-                            return resolve();
+                            return;
                         }
                     notification.remove();
                     blocks.forEach(block => block.style.display = "block");
@@ -137,7 +149,7 @@ async function colours() {
     const score = document.createElement("h2");
     score.textContent = `${nmb_score}: ${points}`;
     document.getElementById("colours").appendChild(score);
-    if (!(await safeDelay(2000))) return;
+    delay(2000);
     score.remove();
     document.getElementById("colours").style.display = "none";
 }

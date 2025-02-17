@@ -32,12 +32,12 @@ async function game() {
         document.getElementById("game_content").style.display = "flex";
 
         document.getElementById("container").addEventListener("click", returnToMainMenu, true);
-        points = 0;
-        //current_game = 2; 
+        points = 0; 
         current_game = Math.floor(Math.random() * 4);
+        current_game = 0;
         switch (current_game)
         {
-            case 0: await colours(); break;
+            case 0: await colours(); break; //there might be a lot of bugs so be careful
             case 1: await numbers(); break;
             case 2: await memory(); break;
             case 3: await sequence(); break;
