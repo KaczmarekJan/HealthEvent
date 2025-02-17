@@ -78,7 +78,7 @@
 
     function sendRanking(type, value){
         if(!localStorage.getItem("nick")){ //exit without nickname
-            return;
+            return false;
         }
         if(localStorage.getItem("id") && localStorage.getItem("key")){
             let request = new Request("https://memory-trainer.ct8.pl/ranking.php", {
@@ -107,6 +107,7 @@
                 })
                 .catch(error => console.error("Error:", error));
         }
+        return true;
     }
 
     function newNick(nick){
@@ -114,6 +115,22 @@
         console.log("Old ranking access keys dropped");
         localStorage.setItem("nick", nick);
     }
-
-
     
+    //New nickname input
+    Array.from(document.getElementsByClassName("nickname")).forEach((element) => {
+        if(localStorage.getItem("nick")){
+            element.value = localStorage.getItem("nick");
+        }
+        element.addEventListener("focusout",(event) => {
+            let nick = event.target.value;
+            if(nick.length > 0 && nick != localStorage.getItem("nick")){
+             newNick(nick);
+            }else{
+                nick = localStorage.getItem("nick");
+            }
+            Array.from(document.getElementsByClassName("nickname")).forEach((element) => {
+                element.value = nick;
+            });
+        });
+    });
+

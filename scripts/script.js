@@ -4,6 +4,7 @@ var points = 125; //number of points
 level(2); //default level
 var m_current = 2; //site page number
 site_language(5); //default language
+var current_game = 0; //current game
 
 function level(x)
 {
@@ -31,8 +32,9 @@ async function game() {
 
         document.getElementById("container").addEventListener("click", returnToMainMenu, true);
 
-        switch (Math.floor(Math.random() * 4))
-        //switch(3)
+        //current_game = 3; 
+        current_game = Math.floor(Math.random() * 4);
+        switch (current_game)
         {
             case 0: await colours(); break;
             case 1: await numbers(); break;
@@ -40,7 +42,6 @@ async function game() {
             case 3: await sequence(); break;
             default: alert("wrong case number"); break;
         }
-        document.getElementsByClassName("nickname")[1].value = document.getElementsByClassName("nickname")[0].value;
         document.getElementById("end_game").style.display = "flex";
 
         document.getElementById("baner_menu").style.display = "flex";
@@ -54,9 +55,15 @@ function No_rank(event)
     event.stopPropagation(); // Blokuje dalsze rozprzestrzenianie kliknięcia
     document.getElementById("end_game").style.display = "none";
 }
-function rank()
-{
-    document.getElementById("nickname").value;
+function rank(event)
+{   
+    const games = ["colours", "number", "memory", "sequence"];
+    if(sendRanking(games[current_game], points)){
+        event.stopPropagation(); // Blokuje dalsze rozprzestrzenianie kliknięcia
+        document.getElementById("end_game").style.display = "none";
+    }else{
+        alert("Please enter a nickname."); //translation to Serbian needed !!!!!!!!!!!!!!!!!!!!!!!!!!!
+    }
 }
 
 function returnToMainMenu(event) 
