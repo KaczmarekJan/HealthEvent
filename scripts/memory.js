@@ -63,6 +63,7 @@ async function memory(){
                 if(!is_game_running){
                     clearInterval(points_countdown_timer); //disable points timer
                     resolve();
+                    return;
                 }
                 //console.log(points_countdown);
                 points_countdown-=2;

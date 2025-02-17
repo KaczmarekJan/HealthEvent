@@ -32,7 +32,7 @@ async function game() {
 
         document.getElementById("container").addEventListener("click", returnToMainMenu, true);
 
-        current_game = 0; 
+        current_game = 2; 
         //current_game = Math.floor(Math.random() * 4);
         switch (current_game)
         {
@@ -42,6 +42,7 @@ async function game() {
             case 3: await sequence(); break;
             default: alert("wrong case number"); break;
         }
+        console.log("Exit to main");
         document.getElementById("end_game").style.display = "flex";
 
         document.getElementById("baner_menu").style.display = "flex";
