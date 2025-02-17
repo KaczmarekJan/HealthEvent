@@ -10,9 +10,9 @@ async function colours() {
 
     // Funkcja do bezpiecznego opóźnienia (sprawdza co 100ms, czy gra została zatrzymana)
     async function safeDelay(ms) {
-        for (let i = 0; i < ms / 100; i++) {
+        for (let i = 0; i < ms / 10; i++) {
             if (!is_game_running) return false;
-            await delay(100);
+            await delay(10);
         }
         return true;
     }
