@@ -34,7 +34,9 @@ async function game() {
         document.getElementById("container").addEventListener("click", returnToMainMenu, true);
         points = 0; 
         current_game = Math.floor(Math.random() * 4);
-        current_game = 0;
+        if(typeof set_game !== 'undefined'){
+            current_game = set_game;
+        }
         switch (current_game)
         {
             case 0: await colours(); break; //there might be a lot of bugs so be careful
