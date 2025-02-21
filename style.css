@@ -313,7 +313,7 @@ input:focus {
 }
 #numbers > div{
     text-align: center;
-    padding: none;
+    padding: 0;
     font-size: 40px;
 }
 .numerki {
