@@ -28,20 +28,20 @@ async function numbers() {
     if (level_value == 3 || level_value == 4) {
         content.innerHTML = instchange_numbers;
 
-        for (let r = 0; r < level_value * 3; r++) {
-            if (!is_game_running) return;
+        gameloop: for (let r = 0; r < level_value * 3; r++) {
+            if (!is_game_running) break gameloop;
 
-            if (!(await safeDelay(1000))) return;
+            if (!(await safeDelay(1000))) break gameloop;
 
             let equals = 0;
             for (let i = 0; i < amount_of_numbers; i++) {
-                if (!is_game_running) return;
+                if (!is_game_running) break gameloop;
 
                 let RandomIndex = Math.ceil(Math.random() * (numbers.length - numbers_range));
                 equals += numbers[RandomIndex];
                 content.innerHTML = "<div class='numerki'>" + numbers.splice(RandomIndex, 1)[0] + "</div>";
 
-                if (!(await safeDelay(1000))) return;
+                if (!(await safeDelay(1000))) break gameloop;
             }
 
             document.getElementById("numbers_instruction").innerHTML = nmb_placeholder;
@@ -93,21 +93,21 @@ async function numbers() {
     } else {
         content.innerHTML = numberbutremeber;
 
-        for (let r = 0; r < level_value * 3; r++) {
-            if (!is_game_running) return;
+        gameloopL: for (let r = 0; r < level_value * 3; r++) {
+            if (!is_game_running) break gameloopL;
 
-            if (!(await safeDelay(1000))) return;
+            if (!(await safeDelay(1000))) break gameloopL;
 
             var equals = new Array(amount_of_numbers).fill(0);
 
             for (let i = 0; i < amount_of_numbers; i++) {
-                if (!is_game_running) return;
+                if (!is_game_running) break gameloopL;
 
                 let RandomIndex = Math.ceil(Math.random() * (numbers.length - numbers_range));
                 equals[i] = numbers[RandomIndex];
                 content.innerHTML = "<div class='numerki'>" + numbers.splice(RandomIndex, 1)[0] + "</div>";
 
-                if (!(await safeDelay(1000))) return;
+                if (!(await safeDelay(1000))) break gameloopL;
             }
 
             document.getElementById("numbers_instruction").innerHTML = nmb_placeholder;
@@ -146,12 +146,12 @@ async function numbers() {
             if (answer.every((val, idx) => val == equals[idx])) {
                 document.getElementById("numbers_instruction").innerHTML = "";
                 content.innerHTML = nmb_correct;
-                if (!(await safeDelay(1000))) return;
+                if (!(await safeDelay(1000))) break gameloopL;
                 points += Math.floor(12.5 * level_value);
             } else {
                 document.getElementById("numbers_instruction").innerHTML = "";
                 content.innerHTML = nmb_incorrect;
-                if (!(await safeDelay(1000))) return;
+                if (!(await safeDelay(1000))) break gameloopL;
             }
 
             if (numbers_range > 9) numbers_range -= 5;
@@ -162,6 +162,6 @@ async function numbers() {
     }
 
     content.innerHTML = `${nmb_score} ${points}`;
-    if (!(await safeDelay(2000))) return;
+    await safeDelay(2000);
     document.getElementById("numbers").style.display = "none";
 }
