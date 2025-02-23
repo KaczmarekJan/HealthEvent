@@ -7,12 +7,7 @@ var nmb_placeholder = "Input the numbers that were displayed one by one.";
 
 async function numbers() {
     document.getElementById("numbers_instruction").innerHTML = "";
-    let gameChecker = setInterval(() => {
-        if (!is_game_running) {
-            clearInterval(gameChecker);
-            document.getElementById("numbers").style.display = "none";
-        }
-    }, 500);
+    
 
     document.getElementById("numbers").style.display = "flex";
     const content = document.getElementById("content");
@@ -53,21 +48,36 @@ async function numbers() {
             content.innerHTML = `<input type="number" id="userAnswer" placeholder="Enter">`;
 
             await new Promise(resolve => {
+                let gameChecker = setInterval(() => {
+                    if (!is_game_running) {
+                        clearInterval(gameChecker);
+                        resolve();
+                        return;
+                    }
+                }, 100);
                 const userAnswer = document.getElementById("userAnswer");
                 const checkAnswer = async (event) => {
-                    if (!is_game_running) return resolve();
-
+                    if (!is_game_running){
+                        resolve();
+                        return;
+                    }
                     if (event.key === "Enter") {
                         if (userAnswer.value == equals) {
                             document.getElementById("numbers_instruction").innerHTML = "";
                             content.innerHTML = nmb_correct;
-                            if (!(await safeDelay(1000))) return resolve();
+                            if (!(await safeDelay(1000))){
+                                resolve();
+                                return;
+                            }
                             points += Math.floor(12.5 * level_value);
                             resolve();
                         } else {
                             document.getElementById("numbers_instruction").innerHTML = "";
                             content.innerHTML = nmb_incorrect;
-                            if (!(await safeDelay(1000))) return resolve();
+                            if (!(await safeDelay(1000))){
+                                resolve()
+                                return;
+                            }
                             resolve();
                         }
                     }
@@ -107,8 +117,18 @@ async function numbers() {
             await new Promise(resolve => {
                 const userAnswer = document.getElementById("userAnswer");
                 let i = 0;
+                let gameChecker = setInterval(() => {
+                    if (!is_game_running) {
+                        clearInterval(gameChecker);
+                        resolve();
+                        return;
+                    }
+                }, 100);
                 const checkAnswer = async (event) => {
-                    if (!is_game_running) return resolve();
+                    if (!is_game_running){
+                        resolve();
+                        return;
+                    }
 
                     if (event.key === "Enter") {
                         answer[i] = userAnswer.value;
