@@ -9,7 +9,6 @@ async function numbers() {
     document.getElementById("numbers_instruction").innerHTML = "";
     let gameChecker = setInterval(() => {
         if (!is_game_running) {
-            console.log("Gra zatrzymana!");
             clearInterval(gameChecker);
             document.getElementById("numbers").style.display = "none";
         }

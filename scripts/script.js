@@ -23,7 +23,7 @@ function level(x)
 
 async function game() {
     
-    if (document.getElementById("m2").style.display !== "none" && getComputedStyle(document.getElementById("end_game")).display !== "flex")
+    if (document.getElementById("m2").style.display !== "none" && getComputedStyle(document.getElementById("end_game")).display !== "flex" && !is_game_running)
     {
         is_game_running = true;
 
@@ -58,17 +58,18 @@ async function game() {
 }
 function No_rank(event) 
 {
-    event.stopPropagation(); // Blokuje dalsze rozprzestrzenianie kliknięcia
+    event.stopPropagation(); // Blocks event propagation
     document.getElementById("end_game").style.display = "none";
 }
+var script_alert_please_enter_nickname = "Please enter a nickname.";
 function rank(event)
 {   
     const games = ["colours", "number", "memory", "sequence"];
     if(sendRanking(games[current_game], points)){
-        event.stopPropagation(); // Blokuje dalsze rozprzestrzenianie kliknięcia
+        event.stopPropagation(); // Blocks event propagation
         document.getElementById("end_game").style.display = "none";
     }else{
-        alert("Please enter a nickname."); //translation to Serbian needed !!!!!!!!!!!!!!!!!!!!!!!!!!!
+        alert(script_alert_please_enter_nickname); 
     }
 }
 
@@ -200,7 +201,7 @@ function site_language(x)
             // Set clicked button to purple
             document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
 
-            //numbers variables
+            //text variables
             instchange_numbers = "Sum all the numbers";
             numberbutremeber = "Remember all the numbers";
             nmb_correct = "Correct!";
@@ -210,6 +211,7 @@ function site_language(x)
             mem_nopoints = "No more points :(";
             mem_hurryup = "Hurry up! Only ";
             mem_pointsleft = "points left!";
+            script_alert_please_enter_nickname ="Please enter a nickname.";
 
             //change main page title
             document.getElementsByTagName("title")[0].innerHTML = "Memory Training";
@@ -228,20 +230,35 @@ function site_language(x)
             document.getElementById("level1").innerHTML = "Easy";
             document.getElementById("level2").innerHTML = "Normal";
             document.getElementById("level3").innerHTML = "Hard";
-            document.getElementById("level4").innerHTML = "SuperHard";
+            document.getElementById("level4").innerHTML = "Super Hard";
             
             //language
             document.getElementById("Language").innerHTML = "Language: "
 
-            //settings window volume nejm
+            //settings window volume name
             document.getElementById("Volume").innerHTML = "Volume: "; 
 
             //change title
             text1 = "<strong>Article</strong>";
             text2 = "<strong>Game</strong>";
             text3 = "<strong>Ranking</strong>";
-
             document.getElementById("title").innerHTML = window["text"+m_current];
+
+            //change nickname placeholder
+            Array.from(document.getElementsByClassName("nickname")).forEach(element => {
+                element.placeholder = "Enter your nickname";
+            });
+
+            //game exit button
+            document.getElementById("baner_game").innerHTML = "<strong>Click anywhere outside the box to return to the main menu</strong>";
+
+            //ranking add question
+            document.getElementById("add_to_ranking").innerText = "Do you want to add your score to a ranking?";
+
+            //ranking yes/no buttons
+            document.getElementById("yes").innerText = "Yes";  
+            document.getElementById("no").innerText = "No";
+
             //change article language
             document.getElementById("m1").innerHTML = `
                 <h1>How Memory Training Helps Different Conditions</h1>
@@ -281,7 +298,7 @@ function site_language(x)
             // Set clicked button to purple
             document.getElementsByClassName("button-89")[x-1].style.setProperty('--color', '#a637e7');
 
-            //numbers variables
+            //text variables
             instchange_numbers = "Saberite sve brojeve: ";
             numberbutremeber = "Zapamtite sledeće brojeve: ";
             nmb_correct = "Tačno!";
@@ -291,6 +308,7 @@ function site_language(x)
             mem_nopoints = "Ostali ste bez poena :(";
             mem_hurryup = "Požuri! Ostalo ti je samo ";
             mem_pointsleft = "poena!";
+            script_alert_please_enter_nickname = "Unesite svoj nickname.";
 
             //change start button game
             document.getElementById("m2").innerHTML = "<p>Kliknite bilo gde da počnete.</p>";
@@ -303,7 +321,7 @@ function site_language(x)
 
             document.getElementById("Language").innerHTML = "Jezik: "
             
-            //settings window volume nejm
+            //settings window volume name
             document.getElementById("Volume").innerHTML = "Glasnoća: "; 
 
             //change title
@@ -316,10 +334,25 @@ function site_language(x)
             document.getElementById("level1").innerHTML = "Lako";
             document.getElementById("level2").innerHTML = "Srednje";
             document.getElementById("level3").innerHTML = "Teško";
-            document.getElementById("level4").innerHTML = "Neograničeno";
+            document.getElementById("level4").innerHTML = "Veoma Teško";
 
             //change main page title
             document.getElementsByTagName("title")[0].innerHTML = "Trener Memorije";
+
+            //change nickname placeholder
+            Array.from(document.getElementsByClassName("nickname")).forEach(element => {
+                element.placeholder = "Unesite svoj nickname";
+            });
+
+            //game exit button
+            document.getElementById("baner_game").innerHTML = "<strong>Kliknite bilo gde izvan ljubičastog da izađete do početne stranice</strong>";
+
+            //ranking add question
+            document.getElementById("add_to_ranking").innerText = "Da li želite da dodate svoje konačne poene u ranking?";
+
+            //ranking yes/no buttons
+            document.getElementById("yes").innerText = "Da";  
+            document.getElementById("no").innerText = "Ne";
 
             //change article language
             document.getElementById("m1").innerHTML = `

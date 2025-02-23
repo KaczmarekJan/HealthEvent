@@ -73,7 +73,7 @@
                     }
                 });
             })
-            .catch(error => console.error("Błąd:", error));
+            .catch(error => console.error("Error:", error));
     }
 
     function sendRanking(type, value){
