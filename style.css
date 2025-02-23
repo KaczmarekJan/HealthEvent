@@ -360,7 +360,7 @@ input:focus {
 }
 .memory-tile{
     margin: 2%;
-    background-image: url(memory/memory-card.jpg);
+    background-image: url(images/memory-cards/memory-card.jpg);
     background-position: center;
     background-size: cover;
 }

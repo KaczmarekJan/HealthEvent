@@ -37,10 +37,10 @@ async function memory(){
 
         console.log("Preloading images");
         var memory_card_handle = new Image();
-        memory_card_handle.src = `memory/memory-card.jpg`;
+        memory_card_handle.src = `images/memory-cards/memory-card.jpg`;
         let images_handle = images.map((element) => { //for tricking browser to preload images
             var img = new Image();
-            img.src = `memory/${element}.jpg`;
+            img.src = `images/memory-cards/${element}.jpg`;
             return img;
         });
         
@@ -101,7 +101,7 @@ async function memory(){
                 const clickedTile = event.target;
                 const tileIndex = tiles.indexOf(clickedTile);
                 console.log("Clicked tile: " + tileIndex + "=>"+images[tileIndex]);
-                clickedTile.style.backgroundImage = `url('memory/${images[tileIndex]}.jpg')`;
+                clickedTile.style.backgroundImage = `url('images/memory-cards/${images[tileIndex]}.jpg')`;
                 
                 if (lastTile === null || lastTile === tileIndex) { //first click
                     lastTile = tileIndex;
