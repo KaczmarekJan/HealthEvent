@@ -75,7 +75,6 @@ async function colours() {
             let notification;
             let gameChecker = setInterval(() => {
                 if (!is_game_running) {
-                    console.log("Gra zatrzymana!");
                     clearInterval(gameChecker);
                     document.getElementById("colours").style.display = "none";
                     try{

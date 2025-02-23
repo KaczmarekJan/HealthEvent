@@ -51,7 +51,7 @@ async function memory(){
             images[i] = images[j];
             images[j] = temp;
         }
-        console.log(images);
+        //console.log(images);
 
         //Render view
         var point_timer_handle = document.createElement("h2");
@@ -100,7 +100,7 @@ async function memory(){
                 flipcard.play();
                 const clickedTile = event.target;
                 const tileIndex = tiles.indexOf(clickedTile);
-                console.log("Clicked tile: " + tileIndex + "=>"+images[tileIndex]);
+                //console.log("Clicked tile: " + tileIndex + "=>"+images[tileIndex]);
                 clickedTile.style.backgroundImage = `url('images/memory-cards/${images[tileIndex]}.jpg')`;
                 
                 if (lastTile === null || lastTile === tileIndex) { //first click
